@@ -1,0 +1,138 @@
+openapi: "3.0.0"
+
+info:
+  version:     "2.0"
+  title:       Setster Scheduling API
+  description: |
+               The Setster API is used to control your account’s data programmatically. The API is organized around REST  and standard HTTP verbs. A consistent envelope is used for all responses alongside response codes to indicate the status of the message and any error codes. JSON is returned on all our API responses with a consistent structure for all messages.
+
+               In order to use the Setster API you will need the API key that you can find within your Setster account and note you should never expose your  API key in any public website's client-side code. The Setster API works on HTTPS only.
+
+servers:
+- url: https://www.setster.com/api/v2
+definitions:
+  Pet:
+    type: "object"
+    required:
+    - "name"
+    - "photoUrls"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+        example: "doggie"
+      photoUrls:
+        type: "array"
+        xml:
+          name: "photoUrl"
+          wrapped: true
+        items:
+          type: "string"
+      status:
+        type: "string"
+        description: "pet status in the store"
+        enum:
+        - "available"
+        - "pending"
+        - "sold"
+    xml:
+      name: "Pet"
+  Tiles: 
+    title: "Tiles step"
+    description: "Tiles type step"
+    type: "object"
+    properties:
+      stepTitle:
+        title: "Title"
+        description: "The title of the step"
+        type: "string"
+        example:
+          - "First step"
+        stepDescription:
+          title: "Description"
+          description: "The description of the step"
+          type: "string"
+          example:
+           - "This is the first step"
+        stepType:
+          title: "Type"
+          description: "The step type"
+          type: "string"
+          enum:
+            - "tiles"
+        key:
+          title: "Key"
+          description: "The key used to store the selected value from this step"
+          type: "string"
+          example:
+            - "step_key"
+            - "first_step"
+        nextStep:
+          title: "Next step"
+          description: "The next step the widget will go to after the user finishes with the current step"
+          type: "integer"
+          example:
+            - 1
+            - 2
+            - 3
+        canSkip:
+          title: "Can skip step"
+          description: 'Option to set this step as being skippable or not. If you set this to true, you need to have the nextStep property defined in the step and not in the tile'
+          type: "boolean"
+        label: 
+          title: "Step value label"
+          description: "The label used to show the value selected in the step. This will be used in the summary screen"
+          type: "string"
+          example:
+            - "Tiles step selected value"
+      tiles:
+        title: "Tiles"
+        description: "Here you can define the different tiles of the step"
+        type: "array"
+        items:
+          title: "Tile definition"
+          description: "Tile definition"
+          type: "object"
+          properties:
+            tileTitle:
+              title: "Tile title"
+              description: "Here you can set the tile title"
+              type: "string"
+              example:
+                - "First tile"
+            tileDescription:
+              title: "Tile description"
+              description: "Here you can set the tile description"
+              type: "string"
+              example:
+                - "The description of the first tile"
+            img:
+              title: "Tile image"
+              description: "A link to a image that will be displayed for the tile"
+              type: "string"
+              format: "uri"
+              example:
+                - 'https://www.site.com/images/image.jpg'
+            value:
+              title: "Tile value"
+              description: "This is the value we will store and send along with the appointment when the user selects this particular tile"
+              type:
+                - "number"
+                - "string"
+              example:
+                - "some value"
+                - 123
+            nextStep:
+              title: "Tile next step"
+              description: "The next the widget will go to if the user selects this tile"
+              type: "integer"
+              example:
+                - 1
+                - 2
+                - 3
+    required:
+      - "type"
+      - "tiles"
+  
