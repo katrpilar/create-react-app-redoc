@@ -1,0 +1,100 @@
+{
+  "title": "Tiles step",
+  "description": "Tiles type step",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "stepTitle": {
+      "title": "Title",
+      "description": "The title of the step",
+      "type": "string",
+      "x-examples": [
+        "First step"
+      ]
+    },
+    "stepDescription": {
+      "title": "Description",
+      "description": "The description of the step",
+      "type": "string",
+      "x-examples": [
+        "This is the first step"
+      ]
+    },
+    "stepType": {
+      "title": "Type",
+      "description": "The step type",
+      "type": "string",
+      "enum": ["tiles"]
+    },
+    "key": {
+      "title": "Key",
+      "description": "The key used to store the selected value from this step",
+      "type": "string",
+      "x-examples": ["step_key", "first_step"]
+    },
+    "nextStep": {
+      "title": "Next step",
+      "description": "The next step the widget will go to after the user finishes with the current step",
+      "type": "integer",
+      "x-examples": [1, 2, 3]
+    },
+    "canSkip": {
+      "title": "Can skip step",
+      "description": "Option to set this step as being skippable or not. If you set this to true, you need to have the nextStep property defined in the step and not in the tile",
+      "type": "boolean"
+    },
+    "label": {
+      "title": "Step value label",
+      "description": "The label used to show the value selected in the step. This will be used in the summary screen",
+      "type": "string",
+      "x-examples": ["Tiles step selected value"]
+    },
+    "tiles": {
+      "title": "Tiles",
+      "description": "Here you can define the different tiles of the step",
+      "type": "array",
+      "items": {
+        "title": "Tile definition",
+        "description": "Tile definition",
+        "type": "object",
+        "properties": {
+          "tileTitle": {
+            "title": "Tile title",
+            "description": "Here you can set the tile title",
+            "type": "string",
+            "x-examples": ["First tile"]
+          },
+          "tileDescription": {
+            "title": "Tile description",
+            "description": "Here you can set the tile description",
+            "type": "string",
+            "x-examples": ["The description of the first tile"]
+          },
+          "img": {
+            "title": "Tile image",
+            "description": "A link to a image that will be displayed for the tile",
+            "type": "string",
+            "format": "uri",
+            "x-examples": ["https://www.site.com/images/image.jpg"]
+          },
+          "value": {
+            "title": "Tile value",
+            "description": "This is the value we will store and send along with the appointment when the user selects this particular tile",
+            "oneOf":[
+              {"type": "number"},
+              {"type": "string"}
+            ],
+            "x-examples": ["some value", 123]
+          },
+          "nextStep": {
+            "title": "Tile next step",
+            "description": "The next the widget will go to if the user selects this tile",
+            "type": "integer",
+            "x-examples": [1, 2, 3]
+          }
+        }
+      }
+    }
+  },
+  "required": ["type", "tiles"]
+}

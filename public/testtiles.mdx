@@ -1,5 +1,42 @@
-# Introduction
+# Steps
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
 ## Tiles
+This step can be used to show a grid of tiles from which the user can select. This step can be a multi tile select step or a single tile select step.
+
 <SchemaDefinition schemaRef="#/components/schemas/TilesSteps" />
+
+## Image Map
+This step can be used to create an image map. It is used to create different click-able areas on an image. This will allow to create a more visual experience for different approaches (selecting a parking lot, a seat at a table, etc.). Note that this is a presentational step and it is not tied down to the availability. For the example of parking lots, if a lot is selected on a previous appointment, we can’t show it as taken.
+
+<SchemaDefinition schemaRef="#/components/schemas/ImageMap" />
+
+## Locations
+This step can be used to show the locations that are defined in Setster as a list. This step is tied down to Setster API and it fetches information from Setster.
+
+<SchemaDefinition schemaRef="#/components/schemas/Locations" />
+
+## Locations Map
+This step can be used to show the locations that are defined in Setster on a Google Map. This step is tied down to Setster API and it fetches information from Setster. When using this step, you have to also define the “googleMapOptions” parameter.
+
+<SchemaDefinition schemaRef="#/components/schemas/LocationsMap" />
+
+## Calendar
+This step can be used to show the Setster booking calendar step. This step is tied down to Setster API and it fetches information from Setster. Also, this step is mandatory as this is the step that will lead you to the submit page.
+
+<SchemaDefinition schemaRef="#/components/schemas/Calendar" />
+
+## Services
+This step can be used to show the services that are defined in Setster as a list. This step is tied down to Setster API and it fetches information from Setster.
+
+<SchemaDefinition schemaRef="#/components/schemas/Services" />
+
+## Staff
+This step can be used to show the staff members that are defined in Setster as a list. This step is tied down to Setster API and it fetches information from Setster.
+
+<SchemaDefinition schemaRef="#/components/schemas/Staff" />
+
+## Filters
+Filters are a way to filter the result fetched from Setster. They are available as a parameter on the following step types: ‘locations’, ‘locations-map’, ‘services’ and ‘staff’. Filters are being applied to the step inside which they are defined. We will start with a full example and describe what each parameter does and after that go over some other examples of use.
+
+<SchemaDefinition schemaRef="#/components/schemas/Filters" />

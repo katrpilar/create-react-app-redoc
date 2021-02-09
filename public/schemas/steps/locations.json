@@ -1,0 +1,46 @@
+{
+  "title": "Locations step",
+  "description": "Locations type step",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "stepTitle": {
+      "title": "Title",
+      "description": "The title of the step",
+      "type": "string",
+      "examples": [
+        "Locations step"
+      ]
+    },
+    "stepDescription": {
+      "title": "Description",
+      "description": "The description of the step",
+      "type": "string",
+      "examples": [
+        "This is an locations step"
+      ]
+    },
+    "stepType": {
+      "title": "Type",
+      "description": "The step type",
+      "type": "string",
+      "enum": [
+        "locations"
+      ]
+    },
+    "nextStep": {
+      "title": "Next step",
+      "description": "The next step the widget will go to after the user finishes with the current step",
+      "type": "integer",
+      "examples": [
+        1,
+        2,
+        3
+      ]
+    },
+    "filters": {
+      "$ref": "_filters.json"
+    }
+  },
+  "required": ["type"]
+}

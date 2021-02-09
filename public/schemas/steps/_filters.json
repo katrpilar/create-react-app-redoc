@@ -1,0 +1,75 @@
+{
+  "title": "Step filters",
+  "description": "Filters that will be applied to the results of this step",
+  "type": "array",
+  "items": {
+    "title": "Filter definition",
+    "description": "Definition of the filters to be applied on the step",
+    "type": "object",
+    "properties": {
+      "step": {
+        "title": "Step number",
+        "description": "The step number from which to get the value to be applied as a filter. This is used to create a filtering system based on user selected values from previous steps",
+        "type": "integer",
+        "examples": [
+          1,
+          2,
+          3
+        ]
+      },
+      "filterBy": {
+        "title": "Filter by all/particular key",
+        "description": "Wheter the filter will be applied to all keys of the items in the step or a particular key",
+        "type": [
+          "string",
+          "array"
+        ],
+        "items": {
+          "type": "string"
+        },
+        "examples": [
+          "*",
+          [
+            "name"
+          ],
+          [
+            "name",
+            "address",
+            "someKey"
+          ]
+        ]
+      },
+      "filterSearchType": {
+        "title": "The type of filtering to be done",
+        "description": "Either to filter the items that contains or are exactly the same as the filtering value",
+        "type": "string",
+        "enum": [
+          "exact",
+          "contains"
+        ],
+        "default": "contains"
+      },
+      "operand": {
+        "title": "Filter operand",
+        "description": "The operand to use when multiple filters are applied",
+        "type": "string",
+        "enum": [
+          "or",
+          "and"
+        ],
+        "default": "and"
+      },
+      "value": {
+        "title": "Filtering value",
+        "description": "A value used to do filtering on the step items. This is used to do static filtering without using values selected by the users in previous steps.",
+        "type": "string",
+        "examples": [
+          "New York"
+        ]
+      }
+    },
+    "required": [
+      "filterBy"
+    ]
+  }
+}
