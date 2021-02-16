@@ -1,9 +1,9 @@
 {
-  "openapi": "3.0.0",
+  "openapi": "3.1.0",
   "info": {
     "version": "2.0",
     "title": "Setster Scheduling API",
-    "description": "The Setster API is used to control your account’s data programmatically. The API is organized around REST  and standard HTTP verbs. A consistent envelope is used for all responses alongside response codes to indicate the status of the message and any error codes. JSON is returned on all our API responses with a consistent structure for all messages.\n\nIn order to use the Setster API you will need the API key that you can find within your Setster account and note you should never expose your  API key in any public website's client-side code. The Setster API works on HTTPS only.\n\n# Authentication\n\n<!-- ReDoc-Inject: <security-definitions> -->"
+    "description": "The Setster API is used to control your account’s data programmatically. The API is organized around REST and standard HTTP verbs. A consistent envelope is used for all responses alongside response codes to indicate the status of the message and any error codes. JSON is returned on all our API responses with a consistent structure for all messages."
   },
   "servers": [
     {
@@ -13,6 +13,10 @@
   "tags": [
     {
       "name": "Account",
+      "description": ""
+    },
+    {
+      "name": "AccountTest",
       "description": ""
     },
     {
@@ -52,16 +56,145 @@
       "description": ""
     },
     {
-      "name": "Config",
+      "name": "Account Model",
+      "x-displayName": "Account",
       "description": {
-        "$ref": "/testtiles.mdx"
+        "$ref":"/api/models/Account.mdx"
+      }
+    },
+    {
+      "name": "Appointment Model",
+      "x-displayName": "Appointment",
+      "description": {
+        "$ref":"/api/models/Appointment.md"
+      }
+    },
+    {
+      "name": "Availability Model",
+      "x-displayName": "Availability",
+      "description": {
+        "$ref":"/api/models/Availability.md"
+      }
+    },
+    {
+      "name": "Client Model",
+      "x-displayName": "Client",
+      "description": {
+        "$ref":"/api/models/Client.md"
+      }
+    },
+    {
+      "name": "Custom Field Model",
+      "x-displayName": "Custom Field",
+      "description": {
+        "$ref":"/api/models/CustomField.md"
+      }
+    },
+    {
+      "name": "Employee Model",
+      "x-displayName": "Employee",
+      "description": {
+        "$ref":"/api/models/Employee.md"
+      }
+    },
+    {
+      "name": "Location Model",
+      "x-displayName": "Location",
+      "description": {
+        "$ref":"/api/models/Location.md"
+      }
+    },
+    {
+      "name": "Service Model",
+      "x-displayName": "Service",
+      "description": {
+        "$ref":"/api/models/Service.md"
+      }
+    },
+    {
+      "name": "Time Zone Model",
+      "x-displayName": "Time Zone",
+      "description": {
+        "$ref":"/api/models/TimeZone.md"
+      }
+    },
+    {
+      "name": "WebHooks Model",
+      "x-displayName": "WebHooks",
+      "description": {
+        "$ref":"/api/models/WebHooks.md"
+      }
+    },
+    {
+      "name": "Configuration",
+      "description": {
+        "$ref": "/booking/configuration.md"
+      }
+    },
+    {
+      "name": "Authentication",
+      "description": {
+        "$ref": "/api/reference.md"
+      }
+    },
+    {
+      "name": "Getting Started General",
+      "x-displayName": "Getting Started",
+      "description": {
+        "$ref": "/general/getting-started.mdx"
+      }
+    },
+    {
+      "name": "Getting Started API",
+      "x-displayName": "Getting Started",
+      "description": {
+        "$ref": "/api/getting-started.mdx"
+      }
+    },
+    {
+      "name": "Getting Started Booking",
+      "x-displayName": "Widget Setup",
+      "description": {
+        "$ref": "/booking/getting-started.mdx"
+      }
+    },
+    {
+      "name": "Core Concepts Booking",
+      "x-displayName": "Concepts",
+      "description": {
+        "$ref": "/booking/concepts.md"
+      }
+    },
+    {
+      "name": "Structure Booking",
+      "x-displayName": "Structure",
+      "description": {
+        "$ref": "/booking/structure.md"
       }
     }
+
   ],
   "x-tagGroups": [
     {
-      "name": "API",
+      "name": "General",
       "tags": [
+        "Getting Started General"
+      ]
+    },
+    {
+      "name": "Booking",
+      "tags": [
+        "Getting Started Booking",
+        "Structure Booking",
+        "Core Concepts Booking",
+        "Configuration"
+      ]
+    },
+    {
+      "name": "API Reference",
+      "tags": [
+        "Getting Started API",
+        "Authentication",
         "Account",
         "Appointment",
         "Availability",
@@ -75,9 +208,18 @@
       ]
     },
     {
-      "name": "Widget",
+      "name": "Models",
       "tags": [
-        "Config"
+        "Account Model",
+        "Appointment Model",
+        "Availability Model",
+        "Client Model",
+        "Custom Field Model",
+        "Employee Model",
+        "Location Model",
+        "Service Model",
+        "Time Zone Model",
+        "WebHooks Model"
       ]
     }
   ],
@@ -85,11 +227,12 @@
     "/account/authenticate": {
       "post": {
         "tags": [
-          "Account"
+          "Account",
+          "AccountTest"
         ],
         "summary": "Authenticate",
-        "operationId": "AccountAuthenticate",
         "description": "The first step to using the Setster API is to authenticate to an account. Authenticate your account by including your key and email in an API request. In the returned response, the session_token should be used for all future API calls. Please note the session_token expires within 24 hours at which you need to re-authenticate and retrieve another session_token to keep the connection open.",
+        "operationId": "accountAuthenticate",
         "parameters": [
           {
             "in": "query",
@@ -212,10 +355,12 @@
     "/account": {
       "get": {
         "tags": [
-          "Account"
+          "Account",
+          "AccountTest"
         ],
         "summary": "Get account info",
         "description": "Retrieves account details",
+        "operationId": "getAccountDetails",
         "security": [
           {
             "session_token": []
@@ -2679,6 +2824,7 @@
         ],
         "summary": "Create employee",
         "description": "Using this endpoint you can create a new service provider within the account",
+        "operationId": "createEmployee",
         "security": [
           {
             "session_token": []
@@ -2732,6 +2878,13 @@
                   ]
                 }
               }
+            },
+            "links": {
+              "CreateEmployee": {
+                "operationId": "getEmployeeDetails",
+                "parameters": {"id": "$response.body#/data/0/id"},
+                "description": "# Testing Links \n This is a test."
+              }
             }
           }
         }
@@ -2743,6 +2896,7 @@
           "Employee"
         ],
         "summary": "Get an employee",
+        "operationId": "getEmployeeDetails",
         "security": [
           {
             "session_token": []
@@ -9561,7 +9715,10 @@
           }
         }
       },
-      "TilesSteps": {
+      "Info": {
+        "$ref": "/schemas/steps/info.json"
+      },
+      "Tiles": {
         "$ref": "/schemas/steps/tiles.json"
       },
       "ImageMap": {
@@ -9584,6 +9741,9 @@
       },
       "Filters": {
         "$ref": "/schemas/steps/_filters.json"
+      },
+      "Settings": {
+        "$ref": "/schemas/settings.json"
       }
     }
   }

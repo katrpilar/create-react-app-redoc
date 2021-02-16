@@ -1,0 +1,1 @@
+This parameter is used to specify a label for this step when showing the selected answer in the appointment summary page.

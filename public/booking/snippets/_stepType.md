@@ -1,0 +1,1 @@
+This parameter is used to specify what type of step is the current step.

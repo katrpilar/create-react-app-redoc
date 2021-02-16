@@ -8,7 +8,7 @@
       "title": "Title",
       "description": "The title of the step",
       "type": "string",
-      "examples": [
+      "x-examples": [
         "Locations step"
       ]
     },
@@ -16,7 +16,7 @@
       "title": "Description",
       "description": "The description of the step",
       "type": "string",
-      "examples": [
+      "x-examples": [
         "This is an locations step"
       ]
     },
@@ -32,7 +32,7 @@
       "title": "Next step",
       "description": "The next step the widget will go to after the user finishes with the current step",
       "type": "integer",
-      "examples": [
+      "x-examples": [
         1,
         2,
         3

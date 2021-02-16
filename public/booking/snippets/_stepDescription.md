@@ -1,0 +1,1 @@
+This parameter is used to specify the step short description. If this parameter is not added, the step will not have a description.

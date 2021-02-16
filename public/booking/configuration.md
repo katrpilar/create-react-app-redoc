@@ -1,13 +1,29 @@
+# Settings File
+The settings file is a json file where we can set different parameters which we use in the widget. When cloning the git project under config/src folder you will find a settings.json file. This file is added to git, so we don’t modify this for now. In order to overwrite the settings file you need to create a settings.local.json file. The settings from the local file will overwrite everything that exists in the settings.json file.
+
+<SchemaDefinition schemaRef="#/components/schemas/Settings" />
+
 # Steps
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Our widget supports different types of steps that you can add. Each step type has parameters that will be on each step as well as parameters that are specific to a certain step type. Below we will explain each step type:
+
+## Info
+This step is a presentational step only. It shows an information page where you can inform the user about different things. It is mostly used as an ending step if the user selects a sequence of different steps that lead to a point where you are not allowed to make an appointment.
+
+<SchemaDefinition schemaRef="#/components/schemas/Info" />
+
 
 ## Tiles
 This step can be used to show a grid of tiles from which the user can select. This step can be a multi tile select step or a single tile select step.
 
-<SchemaDefinition schemaRef="#/components/schemas/TilesSteps" />
+<img src='../images/tilesSnippet.png' alt='tiles img'/>
+
+
+<SchemaDefinition schemaRef="#/components/schemas/Tiles" />
 
 ## Image Map
 This step can be used to create an image map. It is used to create different click-able areas on an image. This will allow to create a more visual experience for different approaches (selecting a parking lot, a seat at a table, etc.). Note that this is a presentational step and it is not tied down to the availability. For the example of parking lots, if a lot is selected on a previous appointment, we can’t show it as taken.
+
+<img src='../images/ImageMapSnippet.png' alt='Image Map'/>
 
 <SchemaDefinition schemaRef="#/components/schemas/ImageMap" />
 

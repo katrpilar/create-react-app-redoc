@@ -1,0 +1,1 @@
+The next step the widget will go to after the user finishes with the current step

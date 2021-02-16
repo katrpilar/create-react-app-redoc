@@ -1,5 +1,17 @@
 import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import logo from './logo.svg';
+import setsterLogo from './setster-logo.png';
+
+import theme from './theme.js';
+import {importMDX} from 'mdx.macro'
+// const Content = lazy(() => importMDX('../public/general/getting-started.mdx'))
+
 import './App.css';
 // import redoc from 'redoc'
 import { RedocStandalone} from 'redoc';
@@ -14,9 +26,10 @@ import redocTest from './redocTest.json';
 class App extends Component {
   render() {
     return (
+      <Router>
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={setsterLogo} className="setster-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
         {/* <JsonSchema
@@ -36,17 +49,20 @@ class App extends Component {
           }}
         /> */}
         {/* <JsonViewer /> */}
-        <RedocStandalone specUrl={redocTest} />
+        <RedocStandalone specUrl={redocTest} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups", "x-codeSamples", "x-displayName", "x-nesting", "x-filters"],
+    theme: theme
+  }} />
         {/* <body>
         <script src="node_modules/redoc/bundles/redoc.standalone.js"> </script> 
 
         </body> */}
         {/* <redoc spec-url={redocTest}/> */}
 
-        <p className="App-intro">
+        {/* <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        </p> */}
       </div>
+      </Router>
     );
   }
 }

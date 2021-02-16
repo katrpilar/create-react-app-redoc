@@ -1,0 +1,1 @@
+This parameter is used to specify a key for this step. The key is used to store the selected value in the custom data with the appointment. This should consist of alphanumeric characters and underscores.

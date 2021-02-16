@@ -1,53 +1,71 @@
 {
-  "title": "Tiles step",
+  "title": "Tiles",
   "description": "Tiles type step",
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
     "stepTitle": {
       "title": "Title",
-      "description": "The title of the step",
+      "description": {"$ref": "../../booking/snippets/_stepTitle.md"},
       "type": "string",
       "x-examples": [
-        "First step"
+        "Please select the shape of your glasses"
       ]
     },
     "stepDescription": {
       "title": "Description",
-      "description": "The description of the step",
+      "description": {"$ref": "../../booking/snippets/_stepDescription.md"},
       "type": "string",
       "x-examples": [
-        "This is the first step"
+        "Select your desired shape of the glasses."
       ]
     },
     "stepType": {
       "title": "Type",
-      "description": "The step type",
+      "description":{"$ref": "../../booking/snippets/_stepType.md"},
       "type": "string",
       "enum": ["tiles"]
     },
     "key": {
       "title": "Key",
-      "description": "The key used to store the selected value from this step",
+      "description": {"$ref": "../../booking/snippets/_key.md"},
       "type": "string",
-      "x-examples": ["step_key", "first_step"]
+      "x-examples": ["glasses_shape", "second_step"]
     },
     "nextStep": {
       "title": "Next step",
-      "description": "The next step the widget will go to after the user finishes with the current step",
+      "description":  {"$ref": "../../booking/snippets/_nextStep.md"},
       "type": "integer",
       "x-examples": [1, 2, 3]
     },
     "canSkip": {
       "title": "Can skip step",
-      "description": "Option to set this step as being skippable or not. If you set this to true, you need to have the nextStep property defined in the step and not in the tile",
+      "description": {"$ref": "../../booking/snippets/_canSkip.md"},
       "type": "boolean"
     },
     "label": {
       "title": "Step value label",
-      "description": "The label used to show the value selected in the step. This will be used in the summary screen",
+      "description": {"$ref": "../../booking/snippets/_label.md"},
       "type": "string",
-      "x-examples": ["Tiles step selected value"]
+      "x-examples": ["Glasses shape"]
+    },
+    "icon":{
+      "title": "Feather icon name",
+      "description": {"$ref": "../../booking/snippets/_icon.md"},
+      "type": "string",
+      "x-examples": ["package"]
+    },
+    "class":{
+      "title": "Adding Custom Classes",
+      "description": {"$ref": "../../booking/snippets/_class.md"},
+      "type": "string",
+      "x-examples": ["differentTitle"]
+    },
+    "showInSummary": {
+      "type": "boolean",
+      "title": "Show In Summary",
+      "description": {"$ref": "../../booking/snippets/_showInSummary.md"},
+      "example": "true"
     },
     "tiles": {
       "title": "Tiles",
@@ -96,5 +114,5 @@
       }
     }
   },
-  "required": ["type", "tiles"]
+  "required": ["type", "tiles", "stepType", "key", "nextStep"]
 }
