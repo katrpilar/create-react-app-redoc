@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 // import logo from './logo.svg';
 import setsterLogo from '../images/setster-logo.png';
+import { Input, Menu } from 'semantic-ui-react'
+
 
 import theme from '../theme.js';
 import {importMDX} from 'mdx.macro'
@@ -24,15 +26,50 @@ import { RedocStandalone} from 'redoc';
 // import redocTest from './redocTest.json';
 import apiOnly from '../apiOnly.json';
 // import developerPortal from '../developerPortal.json';
+
+
 class App extends Component {
+  state = { activeItem: 'home' }
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
   render() {
+    const { activeItem } = this.state
+
     return (
       <Router>
-      <div className="App">
+      <div >
         <header className="App-header">
           <img src={setsterLogo} className="setster-logo" alt="logo" />
-          <h1 className="App-title">Setster Developer Portal</h1>
+          <h1 className="App-title">Setster Developer Portal</h1>   
         </header>
+        <Menu secondary>
+        <Menu.Item
+          name='home'
+          active={activeItem === 'home'}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          name='messages'
+          active={activeItem === 'messages'}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          name='friends'
+          active={activeItem === 'friends'}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Menu position='right'>
+          <Menu.Item>
+            <Input icon='search' placeholder='Search...' />
+          </Menu.Item>
+          <Menu.Item
+            name='logout'
+            active={activeItem === 'logout'}
+            onClick={this.handleItemClick}
+          />
+        </Menu.Menu>
+      </Menu>
         {/* <JsonSchema
           schema={{
             type: 'object',
