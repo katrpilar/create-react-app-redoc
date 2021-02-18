@@ -171,6 +171,13 @@
       "description": {
         "$ref": "/booking/structure.md"
       }
+    },
+    {
+      "name": "Appointments101",
+      "x-displayName": "Appointments",
+      "description": {
+        "$ref": "/booking/appointments101.md"
+      }
     }
 
   ],
@@ -182,14 +189,12 @@
       ]
     },
     {
-      "name": "Booking",
+      "name": "Guides",
       "tags": [
-        "Getting Started Booking",
-        "Structure Booking",
-        "Core Concepts Booking",
-        "Configuration"
+        "Appointments101"
       ]
     },
+    
     {
       "name": "API Reference",
       "tags": [
@@ -207,6 +212,7 @@
         "WebHooks"
       ]
     },
+    
     {
       "name": "Models",
       "tags": [

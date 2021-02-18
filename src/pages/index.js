@@ -21,8 +21,9 @@ import { RedocStandalone} from 'redoc';
 // import setsterYaml from './OpenAPI_Specification (1).yaml';
 // import setsterJSON from './tiles.json';
 // let SchemaDefinition = RedocStandalone.SchemaDefinition;
-import redocTest from '../redocTest.json';
-
+// import redocTest from './redocTest.json';
+import apiOnly from '../apiOnly.json';
+// import developerPortal from '../developerPortal.json';
 class App extends Component {
   render() {
     return (
@@ -30,7 +31,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={setsterLogo} className="setster-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Setster Developer Portal</h1>
         </header>
         {/* <JsonSchema
           schema={{
@@ -49,7 +50,7 @@ class App extends Component {
           }}
         /> */}
         {/* <JsonViewer /> */}
-        <RedocStandalone specUrl={redocTest} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups", "x-codeSamples", "x-displayName", "x-nesting", "x-filters"],
+        <RedocStandalone specUrl={apiOnly} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups", "x-codeSamples", "x-displayName", "x-nesting", "x-filters"],
     theme: theme
   }} />
         {/* <body>
