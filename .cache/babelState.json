@@ -7,6 +7,10 @@
           "options": {}
         },
         {
+          "name": "/Users/katrina/Desktop/Setster/create-react-app-redoc/node_modules/@babel/plugin-proposal-object-rest-spread/lib/index.js",
+          "options": {}
+        },
+        {
           "name": "/Users/katrina/Desktop/Setster/create-react-app-redoc/node_modules/@babel/plugin-proposal-optional-chaining/lib/index.js",
           "options": {}
         },
@@ -39,6 +43,10 @@
       "plugins": [
         {
           "name": "babel-plugin-lodash",
+          "options": {}
+        },
+        {
+          "name": "/Users/katrina/Desktop/Setster/create-react-app-redoc/node_modules/@babel/plugin-proposal-object-rest-spread/lib/index.js",
           "options": {}
         },
         {
@@ -77,6 +85,10 @@
           "options": {}
         },
         {
+          "name": "/Users/katrina/Desktop/Setster/create-react-app-redoc/node_modules/@babel/plugin-proposal-object-rest-spread/lib/index.js",
+          "options": {}
+        },
+        {
           "name": "/Users/katrina/Desktop/Setster/create-react-app-redoc/node_modules/@babel/plugin-proposal-optional-chaining/lib/index.js",
           "options": {}
         },
@@ -109,6 +121,10 @@
       "plugins": [
         {
           "name": "babel-plugin-lodash",
+          "options": {}
+        },
+        {
+          "name": "/Users/katrina/Desktop/Setster/create-react-app-redoc/node_modules/@babel/plugin-proposal-object-rest-spread/lib/index.js",
           "options": {}
         },
         {

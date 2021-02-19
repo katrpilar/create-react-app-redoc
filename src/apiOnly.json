@@ -66,75 +66,75 @@
       "name": "Appointment Model",
       "x-displayName": "Appointment",
       "description": {
-        "$ref":"/api/models/Appointment.md"
+        "$ref":"/api/models/Appointment.mdx"
       }
     },
     {
       "name": "Availability Model",
       "x-displayName": "Availability",
       "description": {
-        "$ref":"/api/models/Availability.md"
+        "$ref":"/api/models/Availability.mdx"
       }
     },
     {
       "name": "Client Model",
       "x-displayName": "Client",
       "description": {
-        "$ref":"/api/models/Client.md"
+        "$ref":"/api/models/Client.mdx"
       }
     },
     {
       "name": "Custom Field Model",
       "x-displayName": "Custom Field",
       "description": {
-        "$ref":"/api/models/CustomField.md"
+        "$ref":"/api/models/CustomField.mdx"
       }
     },
     {
       "name": "Employee Model",
       "x-displayName": "Employee",
       "description": {
-        "$ref":"/api/models/Employee.md"
+        "$ref":"/api/models/Employee.mdx"
       }
     },
     {
       "name": "Location Model",
       "x-displayName": "Location",
       "description": {
-        "$ref":"/api/models/Location.md"
+        "$ref":"/api/models/Location.mdx"
       }
     },
     {
       "name": "Service Model",
       "x-displayName": "Service",
       "description": {
-        "$ref":"/api/models/Service.md"
+        "$ref":"/api/models/Service.mdx"
       }
     },
     {
       "name": "Time Zone Model",
       "x-displayName": "Time Zone",
       "description": {
-        "$ref":"/api/models/TimeZone.md"
+        "$ref":"/api/models/TimeZone.mdx"
       }
     },
     {
       "name": "WebHooks Model",
       "x-displayName": "WebHooks",
       "description": {
-        "$ref":"/api/models/WebHooks.md"
+        "$ref":"/api/models/WebHooks.mdx"
       }
     },
     {
       "name": "Configuration",
       "description": {
-        "$ref": "/booking/configuration.md"
+        "$ref": "/booking/configuration.mdx"
       }
     },
     {
       "name": "Authentication",
       "description": {
-        "$ref": "/api/reference.md"
+        "$ref": "/api/reference.mdx"
       }
     },
     {
@@ -162,35 +162,30 @@
       "name": "Core Concepts Booking",
       "x-displayName": "Concepts",
       "description": {
-        "$ref": "/booking/concepts.md"
+        "$ref": "/booking/concepts.mdx"
       }
     },
     {
       "name": "Structure Booking",
       "x-displayName": "Structure",
       "description": {
-        "$ref": "/booking/structure.md"
+        "$ref": "/booking/structure.mdx"
       }
     },
     {
       "name": "Appointments101",
       "x-displayName": "Appointments",
       "description": {
-        "$ref": "/booking/appointments101.md"
+        "$ref": "/api/appointments101.mdx"
       }
     }
 
   ],
   "x-tagGroups": [
     {
-      "name": "General",
-      "tags": [
-        "Getting Started General"
-      ]
-    },
-    {
       "name": "Guides",
       "tags": [
+        "Getting Started API",
         "Appointments101"
       ]
     },
@@ -198,8 +193,6 @@
     {
       "name": "API Reference",
       "tags": [
-        "Getting Started API",
-        "Authentication",
         "Account",
         "Appointment",
         "Availability",
