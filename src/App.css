@@ -71,3 +71,19 @@
 body{
   margin: 0px;
 }
+
+.setster-btn{
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+  padding: 15px 30px;
+  border-radius: 0px;
+  background-color: #07183b;
+  font-family: Lato, sans-serif;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase; margin: 2px;
+}

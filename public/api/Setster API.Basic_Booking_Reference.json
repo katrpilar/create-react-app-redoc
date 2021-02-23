@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "Appointments 101",
+			"name": "Basic Appointment Booking",
 			"item": [
 				{
 					"name": "1. Get Session Token",
@@ -22,6 +22,7 @@
 										"exec": [
 											"var jsonData = JSON.parse(responseBody);",
 											"pm.collectionVariables.set(\"SESSION_TOKEN\", jsonData.data.session_token);",
+											"pm.collectionVariables.set(\"company_id\", jsonData.data.user.company_id);",
 											"",
 											"",
 											""
@@ -34,7 +35,7 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/account/authenticate?email=email&password={{password}}&token={{API_TOKEN}}",
+									"raw": "{{baseUrl}}/account/authenticate?email={{email}}&password={{password}}&token={{API_TOKEN}}",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -45,7 +46,7 @@
 									"query": [
 										{
 											"key": "email",
-											"value": "email",
+											"value": "{{email}}",
 											"description": "(Required) Account owner email address"
 										},
 										{
@@ -154,10 +155,10 @@
 					"_postman_isSubFolder": true
 				},
 				{
-					"name": "2. Choose Location",
+					"name": "2. Select Location",
 					"item": [
 						{
-							"name": "List locations",
+							"name": "Get locations",
 							"request": {
 								"auth": {
 									"type": "apikey",
@@ -182,7 +183,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/location",
+									"raw": "{{baseUrl}}/location?company_id={{company_id}}",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -198,9 +199,8 @@
 										},
 										{
 											"key": "company_id",
-											"value": "<integer>",
-											"description": "Company id",
-											"disabled": true
+											"value": "{{company_id}}",
+											"description": "Company id"
 										},
 										{
 											"key": "name",
@@ -467,10 +467,10 @@
 					"_postman_isSubFolder": true
 				},
 				{
-					"name": "3. Choose Provider/Employee (Optional)",
+					"name": "3. Select Employee (Optional)",
 					"item": [
 						{
-							"name": "List providers/employees",
+							"name": "Get employees",
 							"request": {
 								"auth": {
 									"type": "apikey",
@@ -495,7 +495,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/employee?include_links=true",
+									"raw": "{{baseUrl}}/employee?company_id={{company_id}}&include_links=true",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -511,9 +511,8 @@
 										},
 										{
 											"key": "company_id",
-											"value": "<integer>",
-											"description": "Company id",
-											"disabled": true
+											"value": "{{company_id}}",
+											"description": "Company id"
 										},
 										{
 											"key": "statuses",
@@ -895,7 +894,7 @@
 					"name": "4. Select Services",
 					"item": [
 						{
-							"name": "List services",
+							"name": "Get services",
 							"request": {
 								"auth": {
 									"type": "apikey",
@@ -920,7 +919,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/service",
+									"raw": "{{baseUrl}}/service?company_id={{company_id}}",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -936,380 +935,14 @@
 										},
 										{
 											"key": "company_id",
-											"value": "<integer>",
-											"description": "Company id",
-											"disabled": true
+											"value": "{{company_id}}",
+											"description": "Company id"
 										},
 										{
 											"key": "location_id",
 											"value": "<integer>",
 											"description": "Location id",
 											"disabled": true
-										},
-										{
-											"key": "active_services",
-											"value": "false",
-											"description": "Return only active services",
-											"disabled": true
-										},
-										{
-											"key": "description",
-											"value": "<string>",
-											"disabled": true
-										},
-										{
-											"key": "auto_confirm",
-											"value": "<boolean>",
-											"disabled": true
-										},
-										{
-											"key": "is_subservice",
-											"value": "<boolean>",
-											"disabled": true
-										},
-										{
-											"key": "duration",
-											"value": "<integer>",
-											"disabled": true
-										},
-										{
-											"key": "duration_padding",
-											"value": "<integer>",
-											"disabled": true
-										},
-										{
-											"key": "max_clients",
-											"value": "<integer>",
-											"disabled": true
-										},
-										{
-											"key": "prior_notice",
-											"value": "<integer>",
-											"disabled": true
-										},
-										{
-											"key": "after_notice",
-											"value": "<integer>",
-											"disabled": true
-										},
-										{
-											"key": "cancel_appointment",
-											"value": "<integer>",
-											"disabled": true
-										},
-										{
-											"key": "reschedule_appointment",
-											"value": "<integer>",
-											"disabled": true
-										},
-										{
-											"key": "send_reminder",
-											"value": "<integer>",
-											"disabled": true
-										},
-										{
-											"key": "start_step",
-											"value": "<integer>",
-											"disabled": true
-										},
-										{
-											"key": "set_schedule",
-											"value": "<integer>",
-											"disabled": true
-										},
-										{
-											"key": "price",
-											"value": "<integer>",
-											"disabled": true
-										},
-										{
-											"key": "payment_min_amount",
-											"value": "<number>",
-											"disabled": true
-										},
-										{
-											"key": "allow_cash_payment",
-											"value": "<boolean>",
-											"disabled": true
-										},
-										{
-											"key": "group_session",
-											"value": "<integer>",
-											"disabled": true
-										},
-										{
-											"key": "waiting_list",
-											"value": "<integer>",
-											"disabled": true
-										},
-										{
-											"key": "client_instructions",
-											"value": "<string>",
-											"disabled": true
-										},
-										{
-											"key": "widget_message",
-											"value": "<string>",
-											"disabled": true
-										},
-										{
-											"key": "password",
-											"value": "<string>",
-											"disabled": true
-										},
-										{
-											"key": "active_from",
-											"value": "<dateTime>",
-											"disabled": true
-										},
-										{
-											"key": "active_until",
-											"value": "<dateTime>",
-											"disabled": true
-										},
-										{
-											"key": "active_interval_status",
-											"value": "<boolean>",
-											"disabled": true
-										},
-										{
-											"key": "status",
-											"value": "<boolean>",
-											"disabled": true
-										},
-										{
-											"key": "photo",
-											"value": "<string>",
-											"disabled": true
-										},
-										{
-											"key": "active_rules",
-											"value": "<boolean>",
-											"disabled": true
-										},
-										{
-											"key": "tmp_default",
-											"value": "<boolean>",
-											"disabled": true
-										}
-									]
-								},
-								"description": "Retrieve the attributes of all your services."
-							},
-							"response": [
-								{
-									"name": "successful operation",
-									"originalRequest": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{baseUrl}}/service?id=<integer>&company_id=<integer>&location_id=<integer>&active_services=false&description=<string>&auto_confirm=<boolean>&is_subservice=<boolean>&duration=<integer>&duration_padding=<integer>&max_clients=<integer>&prior_notice=<integer>&after_notice=<integer>&cancel_appointment=<integer>&reschedule_appointment=<integer>&send_reminder=<integer>&start_step=<integer>&set_schedule=<integer>&price=<integer>&payment_min_amount=<number>&allow_cash_payment=<boolean>&group_session=<integer>&waiting_list=<integer>&client_instructions=<string>&widget_message=<string>&password=<string>&active_from=<dateTime>&active_until=<dateTime>&active_interval_status=<boolean>&status=<boolean>&photo=<string>&active_rules=<boolean>&tmp_default=<boolean>&session_token=<API Key>",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"service"
-											],
-											"query": [
-												{
-													"key": "id",
-													"value": "<integer>"
-												},
-												{
-													"key": "company_id",
-													"value": "<integer>"
-												},
-												{
-													"key": "location_id",
-													"value": "<integer>"
-												},
-												{
-													"key": "active_services",
-													"value": "false"
-												},
-												{
-													"key": "description",
-													"value": "<string>"
-												},
-												{
-													"key": "auto_confirm",
-													"value": "<boolean>"
-												},
-												{
-													"key": "is_subservice",
-													"value": "<boolean>"
-												},
-												{
-													"key": "duration",
-													"value": "<integer>"
-												},
-												{
-													"key": "duration_padding",
-													"value": "<integer>"
-												},
-												{
-													"key": "max_clients",
-													"value": "<integer>"
-												},
-												{
-													"key": "prior_notice",
-													"value": "<integer>"
-												},
-												{
-													"key": "after_notice",
-													"value": "<integer>"
-												},
-												{
-													"key": "cancel_appointment",
-													"value": "<integer>"
-												},
-												{
-													"key": "reschedule_appointment",
-													"value": "<integer>"
-												},
-												{
-													"key": "send_reminder",
-													"value": "<integer>"
-												},
-												{
-													"key": "start_step",
-													"value": "<integer>"
-												},
-												{
-													"key": "set_schedule",
-													"value": "<integer>"
-												},
-												{
-													"key": "price",
-													"value": "<integer>"
-												},
-												{
-													"key": "payment_min_amount",
-													"value": "<number>"
-												},
-												{
-													"key": "allow_cash_payment",
-													"value": "<boolean>"
-												},
-												{
-													"key": "group_session",
-													"value": "<integer>"
-												},
-												{
-													"key": "waiting_list",
-													"value": "<integer>"
-												},
-												{
-													"key": "client_instructions",
-													"value": "<string>"
-												},
-												{
-													"key": "widget_message",
-													"value": "<string>"
-												},
-												{
-													"key": "password",
-													"value": "<string>"
-												},
-												{
-													"key": "active_from",
-													"value": "<dateTime>"
-												},
-												{
-													"key": "active_until",
-													"value": "<dateTime>"
-												},
-												{
-													"key": "active_interval_status",
-													"value": "<boolean>"
-												},
-												{
-													"key": "status",
-													"value": "<boolean>"
-												},
-												{
-													"key": "photo",
-													"value": "<string>"
-												},
-												{
-													"key": "active_rules",
-													"value": "<boolean>"
-												},
-												{
-													"key": "tmp_default",
-													"value": "<boolean>"
-												},
-												{
-													"key": "session_token",
-													"value": "<API Key>"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"body": "{\n \"statusCode\": null,\n \"statusDescriptions\": \"OK\",\n \"data\": [\n  {\n   \"company_id\": 5678,\n   \"name\": \"Default service\",\n   \"duration\": 60,\n   \"id\": 1234,\n   \"description\": \"This service should be used in testing only\",\n   \"auto_confirm\": false,\n   \"is_subservice\": false,\n   \"duration_padding\": 0,\n   \"max_clients\": 0,\n   \"prior_notice\": 0,\n   \"after_notice\": 0,\n   \"cancel_appointment\": 0,\n   \"reschedule_appointment\": 0,\n   \"send_reminder\": 0,\n   \"start_step\": 0,\n   \"set_schedule\": false,\n   \"schedule\": [\n    {\n     \"repeat\": 1,\n     \"start_date\": \"1963-10-07\",\n     \"start_time\": {\n      \"hour\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"min\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"am\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"end_date\": \"1980-02-09\",\n     \"end_time\": {\n      \"hour\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"min\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"am\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"days\": {\n      \"2\": 1,\n      \"3\": 1,\n      \"4\": 1,\n      \"5\": 1,\n      \"6\": 1\n     }\n    },\n    {\n     \"repeat\": 1,\n     \"start_date\": \"1969-11-26\",\n     \"start_time\": {\n      \"hour\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"min\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"am\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"end_date\": \"1948-07-08\",\n     \"end_time\": {\n      \"hour\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"min\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"am\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"days\": {\n      \"2\": 1,\n      \"3\": 1,\n      \"4\": 1,\n      \"5\": 1,\n      \"6\": 1\n     }\n    }\n   ],\n   \"price\": 0,\n   \"payment_min_amount\": 0,\n   \"allow_cash_payment\": false,\n   \"group_session\": 0,\n   \"waiting_list\": 0,\n   \"client_instructions\": \"eiusmod ad in\",\n   \"widget_message\": \"et in\",\n   \"password\": \"dolore in quis in ad\",\n   \"ord\": -91658193,\n   \"created_at\": \"2018-06-26T21:38:15.412Z\",\n   \"active_from\": \"1966-10-08\",\n   \"active_until\": \"1981-06-03\",\n   \"active_interval_status\": true,\n   \"status\": true,\n   \"active_rules\": 1,\n   \"photo\": \"consectetur amet\"\n  },\n  {\n   \"company_id\": 5678,\n   \"name\": \"Default service\",\n   \"duration\": 60,\n   \"id\": 1234,\n   \"description\": \"This service should be used in testing only\",\n   \"auto_confirm\": false,\n   \"is_subservice\": false,\n   \"duration_padding\": 0,\n   \"max_clients\": 0,\n   \"prior_notice\": 0,\n   \"after_notice\": 0,\n   \"cancel_appointment\": 0,\n   \"reschedule_appointment\": 0,\n   \"send_reminder\": 0,\n   \"start_step\": 0,\n   \"set_schedule\": false,\n   \"schedule\": [\n    {\n     \"repeat\": 1,\n     \"start_date\": \"1947-01-24\",\n     \"start_time\": {\n      \"hour\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"min\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"am\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"end_date\": \"1972-12-23\",\n     \"end_time\": {\n      \"hour\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"min\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"am\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"days\": {\n      \"2\": 1,\n      \"3\": 1,\n      \"4\": 1,\n      \"5\": 1,\n      \"6\": 1\n     }\n    },\n    {\n     \"repeat\": 1,\n     \"start_date\": \"1964-03-22\",\n     \"start_time\": {\n      \"hour\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"min\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"am\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"end_date\": \"1970-09-13\",\n     \"end_time\": {\n      \"hour\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"min\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"am\": {\n       \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n     },\n     \"days\": {\n      \"2\": 1,\n      \"3\": 1,\n      \"4\": 1,\n      \"5\": 1,\n      \"6\": 1\n     }\n    }\n   ],\n   \"price\": 0,\n   \"payment_min_amount\": 0,\n   \"allow_cash_payment\": false,\n   \"group_session\": 0,\n   \"waiting_list\": 0,\n   \"client_instructions\": \"exercitation\",\n   \"widget_message\": \"in e\",\n   \"password\": \"officia esse sit\",\n   \"ord\": 91872681,\n   \"created_at\": \"1949-10-16T00:54:33.004Z\",\n   \"active_from\": \"1973-07-22\",\n   \"active_until\": \"1993-12-08\",\n   \"active_interval_status\": true,\n   \"status\": true,\n   \"active_rules\": 1,\n   \"photo\": \"in consequa\"\n  }\n ]\n}"
-								}
-							]
-						},
-						{
-							"name": "List services for Location",
-							"request": {
-								"auth": {
-									"type": "apikey",
-									"apikey": [
-										{
-											"key": "value",
-											"value": "{{SESSION_TOKEN}}",
-											"type": "string"
-										},
-										{
-											"key": "key",
-											"value": "session_token",
-											"type": "string"
-										},
-										{
-											"key": "in",
-											"value": "query",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/service?location_id={{location_id}}",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"service"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "<integer>",
-											"description": "Service id",
-											"disabled": true
-										},
-										{
-											"key": "company_id",
-											"value": "<integer>",
-											"description": "Company id",
-											"disabled": true
-										},
-										{
-											"key": "location_id",
-											"value": "{{location_id}}",
-											"description": "Location id"
 										},
 										{
 											"key": "active_services",
@@ -1652,7 +1285,7 @@
 					"_postman_isSubFolder": true
 				},
 				{
-					"name": "5. Availability",
+					"name": "5. Select Availability",
 					"item": [
 						{
 							"name": "Get Availability Info",
@@ -1680,7 +1313,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/availability?service_id={{service_id}}&start_date={{start_date}}&t=daily&return=times",
+									"raw": "{{baseUrl}}/availability?service_id={{service_id}}&start_date={{start_date}}&t=daily&return=times&company_id={{company_id}}",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -1713,7 +1346,7 @@
 										},
 										{
 											"key": "provider_id",
-											"value": "{{provider_employee_id}}",
+											"value": "{{employee_id}}",
 											"description": "The ID of the provider (employee)",
 											"disabled": true
 										},
@@ -1761,6 +1394,10 @@
 											"value": "<integer>",
 											"description": "Used to retreive the availability for one month. Accepted values are between 1 and 5",
 											"disabled": true
+										},
+										{
+											"key": "company_id",
+											"value": "{{company_id}}"
 										}
 									]
 								},
@@ -1901,9 +1538,8 @@
 										},
 										{
 											"key": "company_id",
-											"value": "",
-											"type": "text",
-											"disabled": true
+											"value": "{{company_id}}",
+											"type": "text"
 										},
 										{
 											"key": "client_email",
@@ -1931,7 +1567,7 @@
 										},
 										{
 											"key": "employee_id",
-											"value": "{{provider_employee_id}}",
+											"value": "{{employee_id}}",
 											"description": "The ID of the employee (provider) that the appointment is made for",
 											"type": "text",
 											"disabled": true
@@ -12909,73 +12545,79 @@
 	],
 	"variable": [
 		{
-			"id": "a008b64f-01b5-48ab-b912-186db93763ee",
+			"id": "ac622537-6f30-4878-85df-6ed5586dce98",
 			"key": "baseUrl",
 			"value": "https://www.setster.com/api/v2",
 			"type": "string"
 		},
 		{
-			"id": "09bb072a-162e-4ba3-b3d2-3f21d879afce",
+			"id": "f1c03f2a-a1d3-4315-9d9a-f95cc89cc241",
 			"key": "email",
 			"value": "ENTER_YOUR_EMAIL",
 			"type": "string"
 		},
 		{
-			"id": "9cbb7a41-34d9-451e-b596-e28df04e46a8",
+			"id": "c10a77e0-049b-44a2-a1f4-74bf73be12d4",
 			"key": "password",
 			"value": "ENTER_YOUR_PASSWORD",
 			"type": "string"
 		},
 		{
-			"id": "714f4a46-c594-48b5-9b52-2928ee3029b0",
+			"id": "840d2b43-4e6b-40f9-b5e2-2ad94cf4e9e0",
 			"key": "API_TOKEN",
 			"value": "ENTER_YOUR_API_KEY",
 			"type": "string"
 		},
 		{
-			"id": "7c374378-3fcb-4bb9-b03d-7859a60c8402",
+			"id": "82867e84-abbb-4567-8a53-8ca6a0207f2a",
 			"key": "SESSION_TOKEN",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "012e2e4e-d9fa-4f2b-99ef-afe820858fe2",
+			"id": "3d15aa65-557f-4ad7-9a15-a322c96a51b3",
+			"key": "company_id",
+			"value": "ENTER_YOUR_COMPANY_ID",
+			"type": "string"
+		},
+		{
+			"id": "b6eccb1f-82ae-4c70-89a0-70a3c6c04f86",
 			"key": "location_id",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "31f0fd13-eaab-40ee-bdbb-ac141ed67f88",
-			"key": "provider_employee_id",
+			"id": "8995045c-a287-4a0f-ac44-47f5666d3871",
+			"key": "employee_id",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "116e8c02-92cd-4f3f-af08-86bb38150660",
+			"id": "d08697a3-c7a3-484d-823d-8116c0a17923",
 			"key": "service_id",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "119889db-246c-4531-a482-360015c08947",
+			"id": "0ddfac4c-0e75-4aed-976b-532d6049f602",
 			"key": "start_date",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "99feb55b-32c8-47ac-9968-8758ec4a83e8",
+			"id": "4a52173e-ff15-49b1-876e-add2a4029cc7",
 			"key": "available_time",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "2e15a63f-d650-4903-a2ee-363a741180a5",
+			"id": "8f502db2-d476-4939-883a-7dbea9973634",
 			"key": "client_email",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "d9f462a7-715e-4f2f-8add-27132301cc52",
+			"id": "8cd12df6-1427-4d56-93de-ff07e370dd60",
 			"key": "client_name",
 			"value": "",
 			"type": "string"

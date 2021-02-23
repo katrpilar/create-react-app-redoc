@@ -6,17 +6,17 @@ import {
   Link
 } from "react-router-dom";
 // import logo from './logo.svg';
-import setsterLogo from '../images/setster-logo.png';
+import setsterLogo from '../../images/setster-logo.png';
 // import { Input, Menu, Icon, Message } from 'semantic-ui-react'
 import * as Semantic from 'semantic-ui-react'
 // const Input = Semantic.Input;
 // const Menu = Semantic.Menu;
 // const Icon = Semantic.Icon;
-import theme from '../theme.js';
+import theme from '../../theme.js';
 // import {importMDX} from 'mdx.macro'
 // const Content = lazy(() => importMDX('../public/general/getting-started.mdx'))
 
-import '../App.css';
+import '../../App.css';
 // import redoc from 'redoc'
 import { RedocStandalone} from 'redoc';
 // import { RedocStandalone} from 'redoc/';
@@ -26,13 +26,13 @@ import { RedocStandalone} from 'redoc';
 // import setsterJSON from './tiles.json';
 // let SchemaDefinition = RedocStandalone.SchemaDefinition;
 // import redocTest from './redocTest.json';
-import bookingOnly from '../bookingOnly.json';
+import appointments101 from '../../appointments101.json';
 // import developerPortal from '../developerPortal.json';
 const  { Input, Menu, Icon, Message } = Semantic
 
 
 class App extends Component {
-  state = { activeItem: 'home' }
+  state = { activeItem: 'Docs' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
@@ -42,7 +42,7 @@ class App extends Component {
     return (
       <Router>
       <div >
-      <header className="App-header">
+        <header className="App-header">
           {/* <img src={setsterLogo} className="setster-logo" alt="logo" /> */}
           {/* <h1 className="App-title">Setster Developer Portal</h1> */}
           {/* <h4 className="App-title">API Reference</h4>    */}
@@ -108,13 +108,13 @@ class App extends Component {
         {/* <JsonViewer /> */}
 
         {/* <h1>This workes</h1> */}
-        {/* <RedocStandalone specUrl={apiOnly} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups", "x-codeSamples", "x-displayName", "x-nesting", "x-filters"],
+        {/* <RedocStandalone specUrl={appointments101} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups", "x-codeSamples", "x-displayName", "x-nesting", "x-filters"],
     theme: theme, allowedMdComponents: {"Message": {component: Message, props: {color: 'red'}, propsSelector: function (store) { return ({store: store}); }}}
   }} /> */}
-{/* <RedocStandalone specUrl={apiOnly} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups", "x-codeSamples", "x-displayName", "x-nesting", "x-filters"],
+{/* <RedocStandalone specUrl={appointments101} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups", "x-codeSamples", "x-displayName", "x-nesting", "x-filters"],
     theme: theme
   }} /> */}
-<RedocStandalone specUrl={bookingOnly} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups", "x-codeSamples", "x-displayName", "x-nesting", "x-filters"], untrustedSpec: true,
+<RedocStandalone specUrl={appointments101} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups", "x-codeSamples", "x-displayName", "x-nesting", "x-filters"], untrustedSpec: true,
     theme: theme, allowedMdComponents: { "Operation":
       {component: "Operation",
       propsSelector: function (store) { return ({
@@ -123,6 +123,10 @@ class App extends Component {
       }) }}
   }
   }}  />
+
+
+{/* <Message color='red'>Red</Message> */}
+
         {/* <body>
         <script src="node_modules/redoc/bundles/redoc.standalone.js"> </script> 
 

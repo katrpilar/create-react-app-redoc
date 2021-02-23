@@ -16,14 +16,8 @@
       "description": ""
     },
     {
-      "name": "Authentication Token",
-      "x-displayName": "Authentication",
+      "name": "AccountAuthTest",
       "description": ""
-    },
-    {
-      "name": "Get Location",
-      "x-displayName": "Get Location",
-      "description": "## Step 1\n  Authenticate your key to get your session token. We'll use the session_token property fromt this response to send to all future requests.\n \n If you're using the provided [Postman Collection](#section/Postman-Collection) locate the <mark>1. Get Session Token</mark> folder within the collection and open the POST request. Before making your first request you'll need to update the [collection variables](#section/Postman-Collection/Collection-Variables): `email, password, and API_TOKEN`.n <blockquote>The `SESSION_TOKEN` collection variable will be automatically updated and saved in your collection after making the Authentication request to retrieve your session token. </blockquote>"
     },
     {
       "name": "AccountTest",
@@ -69,7 +63,7 @@
       "name": "Account Model",
       "x-displayName": "Account",
       "description": {
-        "$ref":"/api/models/Account.md"
+        "$ref":"/api/models/Account.mdx"
       }
     },
     {
@@ -143,11 +137,6 @@
     },
     {
       "name": "Authentication",
-      "description": "<!-- ReDoc-Inject: <security-definitions> -->"
-    }
-    ,
-    {
-      "name": "API Key",
       "description": {
         "$ref": "/api/reference.mdx"
       }
@@ -201,7 +190,8 @@
       "name": "Guides",
       "tags": [
         "Getting Started API",
-        "Authentication Token"
+        "AccountAuthTest",
+        "Appointments101"
       ]
     },
     {
@@ -242,7 +232,7 @@
         "tags": [
           "Account",
           "AccountTest",
-          "Authentication Token"
+          "AccountAuthTest"
         ],
         "summary": "Authenticate",
         "description": "The first step to using the Setster API is to authenticate to an account. Authenticate your account by including your key and email in an API request. In the returned response, the session_token should be used for all future API calls. Please note the session_token expires within 24 hours at which you need to re-authenticate and retrieve another session_token to keep the connection open.",
