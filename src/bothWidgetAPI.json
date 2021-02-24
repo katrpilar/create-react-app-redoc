@@ -171,13 +171,6 @@
       "description": {
         "$ref": "/booking/structure.mdx"
       }
-    },
-    {
-      "name": "Appointments101",
-      "x-displayName": "Appointments",
-      "description": {
-        "$ref": "/booking/appointments101.mdx"
-      }
     }
 
   ],
@@ -186,12 +179,6 @@
       "name": "General",
       "tags": [
         "Getting Started General"
-      ]
-    },
-    {
-      "name": "Guides",
-      "tags": [
-        "Appointments101"
       ]
     },
     {

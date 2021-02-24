@@ -17,13 +17,33 @@
     },
     {
       "name": "Authentication Token",
-      "x-displayName": "Authentication",
-      "description": ""
+      "x-displayName": "Get Session Token",
+      "description": "<!-- ReDoc-Inject: <security-definitions> -->"
     },
     {
-      "name": "Get Location",
-      "x-displayName": "Get Location",
-      "description": "## Step 1\n  Authenticate your key to get your session token. We'll use the session_token property fromt this response to send to all future requests.\n \n If you're using the provided [Postman Collection](#section/Postman-Collection) locate the <mark>1. Get Session Token</mark> folder within the collection and open the POST request. Before making your first request you'll need to update the [collection variables](#section/Postman-Collection/Collection-Variables): `email, password, and API_TOKEN`.n <blockquote>The `SESSION_TOKEN` collection variable will be automatically updated and saved in your collection after making the Authentication request to retrieve your session token. </blockquote>"
+      "name": "Select Location",
+      "x-displayName": "Select Location",
+      "description": "If the account has multiple locations, you can retrieve a list of them and select one that you will make an appointment for. If the account has only one location, this step can be skipped."
+    },
+    {
+      "name": "Select Employee",
+      "x-displayName": "Select Employee (Optional)",
+      "description": "This call may be used to get the list of available employees if you want the user to select a specific one. This step is optional, because the appointment can be scheduled without selecting one specific employee."
+    },
+    {
+      "name": "Select Services",
+      "x-displayName": "Select Services",
+      "description": "Each services record has a `location_links` property that defines the links between the service, the providers and the locations. \n \n This information must be used when displaying a list of locations, proviers and services to the user, to create constraints for the possible combinations. \n \n This parameters is also available for the provider (employee) entity."
+    },
+    {
+      "name": "Select Availability",
+      "x-displayName": "Select Availability",
+      "description": "Get the availability for the selected location(optional), provider(also optional), service and day/week.\n\n - If the location is not specified, then the default location for that company will be selected. \n -       If the provider is not specified, then the availability of all the providers will be calculated"
+    },
+    {
+      "name": "Create Appointment",
+      "x-displayName": "Create Appointment",
+      "description": ""
     },
     {
       "name": "AccountTest",
@@ -69,7 +89,7 @@
       "name": "Account Model",
       "x-displayName": "Account",
       "description": {
-        "$ref":"/api/models/Account.md"
+        "$ref":"/api/models/Account.mdx"
       }
     },
     {
@@ -186,22 +206,19 @@
       "description": {
         "$ref": "/booking/structure.mdx"
       }
-    },
-    {
-      "name": "Appointments101",
-      "x-displayName": "Appointments",
-      "description": {
-        "$ref": "/api/appointments101.mdx"
-      }
     }
-
   ],
   "x-tagGroups": [
     {
-      "name": "Guides",
+      "name": "Appointment Booking",
       "tags": [
         "Getting Started API",
-        "Authentication Token"
+        "Authentication Token",
+        "Select Location",
+        "Select Employee",
+        "Select Services",
+        "Select Availability",
+        "Create Appointment"
       ]
     },
     {
@@ -275,6 +292,25 @@
               "type": "string"
             }
           }
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "source": "curl --location --request POST 'https://www.setster.com/api/v2/account/authenticate?email=ENTER_YOUR_EMAIL&password=ENTER_YOUR_PASSWORD&token=ENTER_YOUR_API_KEY'"
+          },
+          {
+            "lang": "Java",
+            "source": "OkHttpClient client = new OkHttpClient().newBuilder()\r\n  .build();\r\nMediaType mediaType = MediaType.parse(\"text\/plain\");\r\nRequestBody body = RequestBody.create(mediaType, \"\");\r\nRequest request = new Request.Builder()\r\n  .url(\"https:\/\/www.setster.com\/api\/v2\/account\/authenticate?email=ENTER_YOUR_EMAIL&password=ENTER_YOUR_PASSWORD&token=ENTER_YOUR_API_KEY\")\r\n  .method(\"POST\", body)\r\n  .build();\r\nResponse response = client.newCall(request).execute();"
+          },
+          {
+            "lang": "Node",
+            "source": "var request = require('request');\r\nvar options = {\r\n  'method': 'POST',\r\n  'url': 'https:\/\/www.setster.com\/api\/v2\/account\/authenticate?email=ENTER_YOUR_EMAIL&password=ENTER_YOUR_PASSWORD&token=ENTER_YOUR_API_KEY',\r\n  'headers': {\r\n  }\r\n};\r\nrequest(options, function (error, response) { \r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+          },
+          {
+            "lang": "Ruby",
+            "source": "require \"uri\"\r\nrequire \"net\/http\"\r\n\r\nurl = URI(\"https:\/\/www.setster.com\/api\/v2\/account\/authenticate?email=ENTER_YOUR_EMAIL&password=ENTER_YOUR_PASSWORD&token=ENTER_YOUR_API_KEY\")\r\n\r\nhttps = Net::HTTP.new(url.host, url.port);\r\nhttps.use_ssl = true\r\n\r\nrequest = Net::HTTP::Post.new(url)\r\n\r\nresponse = https.request(request)\r\nputs response.read_body"
+          }
+
         ],
         "responses": {
           "200": {
@@ -1783,6 +1819,7 @@
     "/location": {
       "get": {
         "tags": [
+          "Select Location",
           "Location"
         ],
         "summary": "List locations",
@@ -1956,6 +1993,24 @@
             "schema": {
               "type": "boolean"
             }
+          }
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "source": "curl --location --request GET 'https:\/\/www.setster.com\/api\/v2\/location?company_id=&session_token='"
+          },
+          {
+            "lang": "Java",
+            "source": "OkHttpClient client = new OkHttpClient().newBuilder()\r\n  .build();\r\nRequest request = new Request.Builder()\r\n  .url(\"https:\/\/www.setster.com\/api\/v2\/location?company_id=&session_token=\")\r\n  .method(\"GET\", null)\r\n  .build();\r\nResponse response = client.newCall(request).execute();"
+          },
+          {
+            "lang": "Node",
+            "source": "var request = require('request');\r\nvar options = {\r\n  'method': 'GET',\r\n  'url': 'https:\/\/www.setster.com\/api\/v2\/location?company_id=&session_token=',\r\n  'headers': {\r\n  }\r\n};\r\nrequest(options, function (error, response) { \r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+          },
+          {
+            "lang": "Ruby",
+            "source": "require \"uri\"\r\nrequire \"net\/http\"\r\n\r\nurl = URI(\"https:\/\/www.setster.com\/api\/v2\/location?company_id=&session_token=\")\r\n\r\nhttps = Net::HTTP.new(url.host, url.port);\r\nhttps.use_ssl = true\r\n\r\nrequest = Net::HTTP::Get.new(url)\r\n\r\nresponse = https.request(request)\r\nputs response.read_body\r\n"
           }
         ],
         "responses": {
@@ -2510,6 +2565,7 @@
     "/employee": {
       "get": {
         "tags": [
+          "Select Employee",
           "Employee"
         ],
         "summary": "List employees",
@@ -2802,6 +2858,24 @@
               "type": "string",
               "format": "uri"
             }
+          }
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "source": "curl --location --request GET 'https:\/\/www.setster.com\/api\/v2\/employee?company_id=&include_links=true&session_token='"
+          },
+          {
+            "lang": "Java",
+            "source": "OkHttpClient client = new OkHttpClient().newBuilder()\r\n  .build();\r\nRequest request = new Request.Builder()\r\n  .url(\"https:\/\/www.setster.com\/api\/v2\/employee?company_id=&include_links=true&session_token=\")\r\n  .method(\"GET\", null)\r\n  .build();\r\nResponse response = client.newCall(request).execute();"
+          },
+          {
+            "lang": "Node",
+            "source": "var request = require('request');\r\nvar options = {\r\n  'method': 'GET',\r\n  'url': 'https:\/\/www.setster.com\/api\/v2\/employee?company_id=&include_links=true&session_token=',\r\n  'headers': {\r\n  }\r\n};\r\nrequest(options, function (error, response) { \r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+          },
+          {
+            "lang": "Ruby",
+            "source": "require \"uri\"\r\nrequire \"net\/http\"\r\n\r\nurl = URI(\"https:\/\/www.setster.com\/api\/v2\/employee?company_id=&include_links=true&session_token=\")\r\n\r\nhttps = Net::HTTP.new(url.host, url.port);\r\nhttps.use_ssl = true\r\n\r\nrequest = Net::HTTP::Get.new(url)\r\n\r\nresponse = https.request(request)\r\nputs response.read_body\r\n"
           }
         ],
         "responses": {
@@ -3841,6 +3915,7 @@
     "/availability": {
       "get": {
         "tags": [
+          "Select Availability",
           "Availability"
         ],
         "summary": "Get Availability Info",
@@ -3981,6 +4056,24 @@
               "maximum": 5
             },
             "example": 4
+          }
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "source": "curl --location --request GET 'https:\/\/www.setster.com\/api\/v2\/availability?service_id=&start_date=&t=daily&return=times&company_id=&session_token='"
+          },
+          {
+            "lang": "Java",
+            "source": "OkHttpClient client = new OkHttpClient().newBuilder()\r\n  .build();\r\nRequest request = new Request.Builder()\r\n  .url(\"https:\/\/www.setster.com\/api\/v2\/availability?service_id=&start_date=&t=daily&return=times&company_id=&session_token=\")\r\n  .method(\"GET\", null)\r\n  .build();\r\nResponse response = client.newCall(request).execute();"
+          },
+          {
+            "lang": "Node",
+            "source": "var request = require('request');\r\nvar options = {\r\n  'method': 'GET',\r\n  'url': 'https:\/\/www.setster.com\/api\/v2\/availability?service_id=&start_date=&t=daily&return=times&company_id=&session_token=',\r\n  'headers': {\r\n  }\r\n};\r\nrequest(options, function (error, response) { \r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+          },
+          {
+            "lang": "Ruby",
+            "source": "require \"uri\"\r\nrequire \"net\/http\"\r\n\r\nurl = URI(\"https:\/\/www.setster.com\/api\/v2\/availability?service_id=&start_date=&t=daily&return=times&company_id=&session_token=\")\r\n\r\nhttps = Net::HTTP.new(url.host, url.port);\r\nhttps.use_ssl = true\r\n\r\nrequest = Net::HTTP::Get.new(url)\r\n\r\nresponse = https.request(request)\r\nputs response.read_body\r\n"
           }
         ],
         "responses": {
@@ -4319,6 +4412,7 @@
     "/service": {
       "get": {
         "tags": [
+          "Select Services",
           "Service"
         ],
         "summary": "List services",
@@ -4562,6 +4656,24 @@
             "schema": {
               "type": "boolean"
             }
+          }
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "curl",
+            "source": "curl --location --request GET 'https:\/\/www.setster.com\/api\/v2\/service?company_id=&session_token='"
+          },
+          {
+            "lang": "Java",
+            "source": "OkHttpClient client = new OkHttpClient().newBuilder()\r\n  .build();\r\nRequest request = new Request.Builder()\r\n  .url(\"https:\/\/www.setster.com\/api\/v2\/service?company_id=&session_token=\")\r\n  .method(\"GET\", null)\r\n  .build();\r\nResponse response = client.newCall(request).execute();"
+          },
+          {
+            "lang": "Node",
+            "source": "var request = require('request');\r\nvar options = {\r\n  'method': 'GET',\r\n  'url': 'https:\/\/www.setster.com\/api\/v2\/service?company_id=&session_token=',\r\n  'headers': {\r\n  }\r\n};\r\nrequest(options, function (error, response) { \r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+          },
+          {
+            "lang": "Ruby",
+            "source": "require \"uri\"\r\nrequire \"net\/http\"\r\n\r\nurl = URI(\"https:\/\/www.setster.com\/api\/v2\/service?company_id=&session_token=\")\r\n\r\nhttps = Net::HTTP.new(url.host, url.port);\r\nhttps.use_ssl = true\r\n\r\nrequest = Net::HTTP::Get.new(url)\r\n\r\nresponse = https.request(request)\r\nputs response.read_body\r\n"
           }
         ],
         "responses": {
@@ -5340,6 +5452,7 @@
       },
       "post": {
         "tags": [
+          "Create Appointment",
           "Appointment"
         ],
         "summary": "Create appointment",
@@ -5352,11 +5465,19 @@
         "x-codeSamples": [
           {
             "lang": "curl",
-            "source": "curl -i -X POST \\\n'https://www.setster.com/api/v2/appointment?session_token=YOUR_API_KEY_HERE' \\\n-H 'Content-Type: application/json' \\\n-d '{\n  \"data\": {\n    \"company_id\": 3123,\n    \"client_email\": \"user@example.com\",\n    \"client_name\": \"Test Client\",\n    \"client_phone\": \"12345678\",\n    \"client_address\": \"string\",\n    \"employee_id\": 12412,\n    \"location_id\": 54232,\n    \"service_id\": 453,\n    \"start_date\": \"2019-09-01 12:00\",\n    \"duration\": 15,\n    \"note\": \"string\",\n    \"status\": 0,\n    \"subservices\": \"string\",\n    \"paid\": false,\n    \"price\": 0,\n    \"ews_id\": \"\",\n    \"custom_fields\": {\n      \"1\": [\n        \"(01512) 793246\",\n        \"Work Phone\"\n      ],\n      \"2\": [\n        [\n          \"201 S. Division St.\",\n          \"500\",\n          \"Ann Arbor\",\n          \"MI\",\n          \"48104\"\n        ],\n        \"Full Address\"\n      ],\n      \"3\": [\n        \"123ABC\",\n        \"Coupon Code\",\n        \"h\"\n      ]\n    },\n    \"timezone_id\": 553\n  }\n}'\"\n"
+            "source": "curl --location --request POST 'https:\/\/www.setster.com\/api\/v2\/appointment?session_token=' --header 'Content-Type: application\/x-www-form-urlencoded' --data-urlencode 'company_id=' --data-urlencode 'client_email=' --data-urlencode 'client_name=' --data-urlencode 'employee_id=' --data-urlencode 'location_id=' --data-urlencode 'service_id=' --data-urlencode 'start_date= '"
           },
           {
-            "lang": "JavaScript",
-            "source": "const query = new URLSearchParams({\n  session_token: 'YOUR_API_KEY_HERE'\n}).toString();\nconst resp = await fetch(\n'https://www.setster.com/api/v2/appointment?' + query,\n    {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json'\n      },\n      body: JSON.stringify({\n        data: {\n          company_id: 3123,\n          client_email: 'user@example.com',\n          client_name: 'Test Client',\n          client_phone: '12345678',\n          client_address: 'string',\n          employee_id: 12412,\n          location_id: 54232,\n          service_id: 453,\n          start_date: '2019-09-01 12:00',\n          duration: 15,\n          note: 'string',\n          status: 0,\n          subservices: 'string',\n          paid: false,\n          price: 0,                \n          ews_id: '',\n          custom_fields: {\n            '1': [\n              '(01512) 793246',\n              'Work Phone'\n            ],\n            '2': [\n              [\n                '201 S. Division St.',\n                '500',\n                'Ann Arbor',\n                'MI',\n                '48104'\n              ],\n              'Full Address'\n            ],\n            '3': [\n              '123ABC',\n              'Coupon Code',\n              'h'\n            ]\n          },\n          timezone_id: 553\n        }\n      })\n    }\n  );\n  const data = await resp.json();\n  console.log(data);\n"
+            "lang": "Java",
+            "source": "OkHttpClient client = new OkHttpClient().newBuilder()\r\n  .build();\r\nMediaType mediaType = MediaType.parse(\"application\/x-www-form-urlencoded\");\r\nRequestBody body = RequestBody.create(mediaType, \"company_id=&client_email=&client_name=&employee_id=&location_id=&service_id=&start_date= \");\r\nRequest request = new Request.Builder()\r\n  .url(\"https:\/\/www.setster.com\/api\/v2\/appointment?session_token=\")\r\n  .method(\"POST\", body)\r\n  .addHeader(\"Content-Type\", \"application\/x-www-form-urlencoded\")\r\n  .build();\r\nResponse response = client.newCall(request).execute();"
+          },
+          {
+            "lang": "Node",
+            "source": "var request = require('request');\r\nvar options = {\r\n  'method': 'POST',\r\n  'url': 'https:\/\/www.setster.com\/api\/v2\/appointment?session_token=',\r\n  'headers': {\r\n    'Content-Type': 'application\/x-www-form-urlencoded'\r\n  },\r\n  form: {\r\n    'company_id': '',\r\n    'client_email': '',\r\n    'client_name': '',\r\n    'employee_id': '',\r\n    'location_id': '',\r\n    'service_id': '',\r\n    'start_date': ' '\r\n  }\r\n};\r\nrequest(options, function (error, response) { \r\n  if (error) throw new Error(error);\r\n  console.log(response.body);\r\n});\r\n"
+          },
+          {
+            "lang": "Ruby",
+            "source": "require \"uri\"\r\nrequire \"net\/http\"\r\n\r\nurl = URI(\"https:\/\/www.setster.com\/api\/v2\/appointment?session_token=\")\r\n\r\nhttps = Net::HTTP.new(url.host, url.port);\r\nhttps.use_ssl = true\r\n\r\nrequest = Net::HTTP::Post.new(url)\r\nrequest[\"Content-Type\"] = \"application\/x-www-form-urlencoded\"\r\nrequest.body = \"company_id=&client_email=&client_name=&employee_id=&location_id=&service_id=&start_date=%20\"\r\n\r\nresponse = https.request(request)\r\nputs response.read_body\r\n"
           }
         ],
         "requestBody": {

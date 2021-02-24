@@ -6,7 +6,7 @@
   "properties": {
     "stepTitle": {
       "title": "Title",
-      "description": {"$ref": "../../booking/snippets/_stepTitle.md"},
+      "description": {"$ref": "../../booking/snippets/_stepTitle.mdx"},
       "type": "string",
       "x-examples": [
         "Please select the shape of your glasses"
@@ -14,7 +14,7 @@
     },
     "stepDescription": {
       "title": "Description",
-      "description": {"$ref": "../../booking/snippets/_stepDescription.md"},
+      "description": {"$ref": "../../booking/snippets/_stepDescription.mdx"},
       "type": "string",
       "x-examples": [
         "Select your desired shape of the glasses."
@@ -22,49 +22,49 @@
     },
     "stepType": {
       "title": "Type",
-      "description":{"$ref": "../../booking/snippets/_stepType.md"},
+      "description":{"$ref": "../../booking/snippets/_stepType.mdx"},
       "type": "string",
       "enum": ["tiles"]
     },
     "key": {
       "title": "Key",
-      "description": {"$ref": "../../booking/snippets/_key.md"},
+      "description": {"$ref": "../../booking/snippets/_key.mdx"},
       "type": "string",
       "x-examples": ["glasses_shape", "second_step"]
     },
     "nextStep": {
       "title": "Next step",
-      "description":  {"$ref": "../../booking/snippets/_nextStep.md"},
+      "description":  {"$ref": "../../booking/snippets/_nextStep.mdx"},
       "type": "integer",
       "x-examples": [1, 2, 3]
     },
     "canSkip": {
       "title": "Can skip step",
-      "description": {"$ref": "../../booking/snippets/_canSkip.md"},
+      "description": {"$ref": "../../booking/snippets/_canSkip.mdx"},
       "type": "boolean"
     },
     "label": {
       "title": "Step value label",
-      "description": {"$ref": "../../booking/snippets/_label.md"},
+      "description": {"$ref": "../../booking/snippets/_label.mdx"},
       "type": "string",
       "x-examples": ["Glasses shape"]
     },
     "icon":{
       "title": "Feather icon name",
-      "description": {"$ref": "../../booking/snippets/_icon.md"},
+      "description": {"$ref": "../../booking/snippets/_icon.mdx"},
       "type": "string",
       "x-examples": ["package"]
     },
     "class":{
       "title": "Adding Custom Classes",
-      "description": {"$ref": "../../booking/snippets/_class.md"},
+      "description": {"$ref": "../../booking/snippets/_class.mdx"},
       "type": "string",
       "x-examples": ["differentTitle"]
     },
     "showInSummary": {
       "type": "boolean",
       "title": "Show In Summary",
-      "description": {"$ref": "../../booking/snippets/_showInSummary.md"},
+      "description": {"$ref": "../../booking/snippets/_showInSummary.mdx"},
       "example": "true"
     },
     "tiles": {

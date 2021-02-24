@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Link
+// } from "react-router-dom";
 import setsterLogo from '../../images/setster-logo.png';
 import * as Semantic from 'semantic-ui-react'
 import theme from '../../theme.js';
@@ -26,7 +26,7 @@ class Api extends Component {
     const { activeItem } = this.state
 
     return (
-      <Router>
+      // <Router>
       <div >
         <header className="App-header">
 <MenuNav activeItem={activeItem} handleItemClick={this.handleItemClick}/>
@@ -57,7 +57,7 @@ class Api extends Component {
 {/* <RedocStandalone specUrl={apiOnly} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups", "x-codeSamples", "x-displayName", "x-nesting", "x-filters"],
     theme: theme
   }} /> */}
-<RedocStandalone specUrl={apiOnly} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups", "x-codeSamples", "x-displayName", "x-nesting", "x-filters"],
+<RedocStandalone specUrl={apiOnly} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups",  "x-displayName", "x-nesting", "x-filters"],hideLoading: true,
     theme: theme
   }}  />
 
@@ -74,7 +74,7 @@ class Api extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p> */}
       </div>
-      </Router>
+      // </Router>
     );
   }
 }

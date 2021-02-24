@@ -6,7 +6,7 @@
   "properties": {
     "stepTitle": {
       "title": "Title",
-      "description": {"$ref": "../../booking/snippets/_stepTitle.md"},
+      "description": {"$ref": "../../booking/snippets/_stepTitle.mdx"},
       "type": "string",
       "x-examples": [
         "Please select the shape of your glasses"
@@ -14,7 +14,7 @@
     },
     "stepDescription": {
       "title": "Description",
-      "description": {"$ref": "../../booking/snippets/_stepDescription.md"},
+      "description": {"$ref": "../../booking/snippets/_stepDescription.mdx"},
       "type": "string",
       "x-examples": [
         "Select your desired shape of the glasses."
@@ -22,13 +22,13 @@
     },
     "stepType": {
       "title": "Type",
-      "description":{"$ref": "../../booking/snippets/_stepType.md"},
+      "description":{"$ref": "../../booking/snippets/_stepType.mdx"},
       "type": "string",
       "enum": ["info"]
     },
     "nextStep": {
       "title": "Next step",
-      "description":  {"$ref": "../../booking/snippets/_nextStep.md"},
+      "description":  {"$ref": "../../booking/snippets/_nextStep.mdx"},
       "type": "integer",
       "x-examples": [1, 2, 3]
     },
@@ -40,7 +40,7 @@
     },
     "img": {
       "title": "Image",
-      "description": {"$ref": "../../booking/snippets/_img.md"},
+      "description": {"$ref": "../../booking/snippets/_img.mdx"},
       "type": "string",
       "x-examples": "streamline-icon-ambulance-car@140x140.png"
     }

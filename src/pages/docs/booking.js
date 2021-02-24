@@ -1,10 +1,10 @@
   import React, { Component } from 'react';
-  import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
+  // import {
+  //   BrowserRouter as Router,
+  //   Switch,
+  //   Route,
+  //   Link
+  // } from "react-router-dom";
   import setsterLogo from '../../images/setster-logo.png';
   import * as Semantic from 'semantic-ui-react'
   import theme from '../../theme.js';
@@ -25,19 +25,13 @@ class Booking extends Component {
     const { activeItem } = this.state
 
     return (
-      <Router>
+      // <Router>
       <div >
       <header className="App-header">
           <MenuNav activeItem={activeItem} handleItemClick={this.handleItemClick}/>
         </header>
 <RedocStandalone specUrl={bookingOnly} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups", "x-codeSamples", "x-displayName", "x-nesting", "x-filters"], untrustedSpec: true,
-    theme: theme, allowedMdComponents: { "Operation":
-      {component: "Operation",
-      propsSelector: function (store) { return ({
-          parser: store.spec.parser,
-          options: store.options
-      }) }}
-  }
+    theme: theme, hideLoading: true
   }}  />
         {/* <body>
         <script src="node_modules/redoc/bundles/redoc.standalone.js"> </script> 
@@ -49,7 +43,7 @@ class Booking extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p> */}
       </div>
-      </Router>
+      // </Router>
     );
   }
 }
