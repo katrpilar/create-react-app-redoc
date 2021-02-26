@@ -49,12 +49,12 @@
 
 .App-title {
   font-size: 1.5em;
-  font-family: "Source Sans Pro",sans-serif;
+  /* font-family: "Source Sans Pro",sans-serif; */
 }
 
 .App-title-h4 {
   font-size: 1em;
-  font-family: "Source Sans Pro",sans-serif;
+  /* font-family: "Source Sans Pro",sans-serif; */
 }
 
 
@@ -89,19 +89,21 @@ body{
 }
 
 .ui{
-  font-family: "Source Sans Pro",sans-serif;
+  /* font-family: "Source Sans Pro",sans-serif; */
 }
 
 h1.ui.header{
   font-size: 3.5em;
-  font-weight: 600;
-    font-family: "Source Sans Pro",sans-serif;
+  font-weight: 900;
+  font-family: Lato, sans-serif;
+  color: #4d4d4d;
+    /* font-family: "Source Sans Pro",sans-serif; */
 
 }
 h2.ui.header{
   font-size: 1.875em;
   font-weight: 100;
-    font-family: "Source Sans Pro",sans-serif;
+    /* font-family: "Source Sans Pro",sans-serif; */
 
 }
 
@@ -113,14 +115,48 @@ button.ui.inverted.primary.buttons .button{
   box-shadow: 0px 0px 5px 0px rgb(35 35 35 / 34%) !important;
 }
 
-.ui.inverted.primary.button.get-started{
+.ui.primary.button.get-started{
   box-shadow: none !important;
+  /* box-shadow: 0px 0px 5px 0px rgb(35 35 35 / 34%) !important; */
+  /* color: #d0021b!important; */
+  padding: 15px 30px;
+  border-radius: 0px;
+  /* background-image: #07183b; */
+  font-family: Lato, sans-serif;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase; margin: 2px;
+  /* transition: background-position 1s; */
+  background-size: 200% 200%;
+  background-image: linear-gradient(to left, white 50%,#07183b 0% );
+  background-position: left;
+
+  /* -webkit-transition: background-position 1s;
+  -moz-transition: background-position 1s;
+  transition: background-position 1s; */
+  display: inline-block;
+  transition: background-position .3s, color .3s;
+
 }
 
-.ui.inverted.primary.button.get-started:hover{
-  box-shadow: 0px 0px 5px 0px rgb(35 35 35 / 34%) !important;
-  color: #d0021b!important;
-  background-color: #fff !important;
+.ui.primary.button.get-started:hover{
+  /* box-shadow: 0px 0px 5px 0px rgb(35 35 35 / 34%) !important; */
+  color:  #07183b!important;
+  /* background-color: #fff; */
+    box-shadow: none !important;
+    /* background-position: 0 -100%; */
+    background-position: right;
+    /* background-position: left; */
+    transition-timing-function: linear;
+    /* transition: background-color .3s, color .3s;
+    transition-timing-function: linear; */
+  /* background-color: #d0021b !important; */
+  /* background-color:  linear-gradient(90deg, rgba(53,67,96,1) 24%, rgba(29,44,76,1) 53%, rgba(7,24,59,1) 83%);;
+  background: rgb(97,129,198); */
+/* background-color: linear-gradient(49deg, rgba(97,129,198,1) 8%, rgba(53,67,96,1) 40%, rgba(29,44,76,1) 75%)!important; */
 }
 
 .ui.menu>.container.menu-container{
@@ -131,14 +167,16 @@ button.ui.inverted.primary.buttons .button{
 
 .ui.inverted.button.sign-up{
   box-shadow: none !important;
-  color: rgba(255,255,255,.7) !important;
+  /* color: rgba(255,255,255,.7) !important; */
+  color: #020918 !important;
 }
 
 .ui.inverted.button.sign-up:hover{
   box-shadow: none !important;
-  color: #fff !important;
+  /* color: #fff !important; */
+  color: #ababab !important;
   box-shadow: 0 0 0 2px #fff inset!important;
-
+  text-decoration: underline;
 }
 
 .explore-btn{
@@ -154,18 +192,32 @@ button.ui.inverted.primary.buttons .button{
 }
 
 .segment-btn{
-  box-shadow: 0px 0px 5px 0px rgb(35 35 35 / 34%) !important;
-  color: #fff !important;
-  background-color: #d0021b !important;
+  /* box-shadow: 0px 0px 5px 0px rgb(35 35 35 / 34%) !important; */
+  color: #07183b !important;
+  box-shadow: none!important;
+  /* background-color: #d0021b !important; */
+  background-color: white !important;
+  border-radius: 0% !important;
+  text-transform: uppercase !important;
 }
 
 .segment-btn:hover{
-  box-shadow: 0px 0px 5px 0px rgb(35 35 35 / 34%) !important;
-  border: solid 2px #000 !important;
+  /* box-shadow: 0px 0px 5px 0px rgb(35 35 35 / 34%) !important; */
+  /* border: solid 1px #000 !important; */
   color: #fff!important;
-  background-color: #000 !important;
+  background-color: #07183b !important;
+  transition: background-color .3s, color .3s;
+  transition-timing-function: linear;
 }
 
 .api-info-version {
   display: none;
+}
+.menu-container .item:hover{
+  color: #ababab !important;
+}
+
+.cards-grid:hover{
+  transition: .5s;
+  background-color: #eee !important;
 }

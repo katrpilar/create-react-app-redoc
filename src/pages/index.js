@@ -45,7 +45,6 @@ const HomepageHeading = ({ mobile }) => (
     <Header
       as='h1'
       content='Setster Developer Portal'
-      inverted
       style={{
         fontSize: mobile ? '2em' : '2.7em',
         marginBottom: 0,
@@ -55,14 +54,13 @@ const HomepageHeading = ({ mobile }) => (
     <Header
       as='h2'
       content='Everything you need to Start Booking Appointments Today'
-      inverted
       style={{
         fontSize: mobile ? '1.3em' : '1.4em',
         marginTop: mobile ? '0.5em' : '1.5em',
         marginBottom: '3.4em'
       }}
     />
-    <Button primary inverted size='huge' href="/docs/api" style={{ border: '#fff 2px solid', background: 'transparent', fontSize: '16px', color: '#fff'}} className="get-started" >
+    <Button primary inverted size='huge' href="/docs/api" className="get-started" >
       Get Started
       <Icon name='right arrow' />
     </Button>
@@ -95,15 +93,13 @@ class DesktopContainer extends Component {
           onBottomPassedReverse={this.hideFixedMenu}
         >
           <Segment
-            inverted
             textAlign='center'
-            style={{ minHeight: 700, padding: '1em 0em',   background: 'linear-gradient( -63.43000000000001deg, #d0021b 15%, #9d0214 85%)' }}
+            style={{ minHeight: 700, padding: '1em 0em'}}
             vertical
             className="App-header"
           >
             <Menu
               fixed={fixed ? 'top' : null}
-              inverted={!fixed}
               pointing={!fixed}
               secondary={!fixed}
               size='large'
@@ -253,22 +249,25 @@ const HomepageLayout = () => (
       as='h3'
       content='Setster Appointment Scheduling Framework'
       textAlign='center'
+      color="#020a1b"
       style={{ fontSize: '2em', marginTop:'3em', marginBottom: '2em' }}
     />
     <Grid columns={3} container doubling stackable textAlign='center' style={{marginBottom:'3em'}}>
       <Grid.Column>
-        <Segment style={{}}>
+        <Segment 
+       className='cards-grid'
+        >
         <Image rounded size='tiny' src={apiImg} centered style={{height: '60px', width: 'auto', marginTop: '3.4em'}}/>
         <Header as='h4' style={{ fontSize: '1.5em' }}>
         Setster API
             </Header>
             <p style={{height: '5em'}}>Setster's API supports the remote management of scheduling appointments and integrations with third party workflows designed to match your business architecture and product.</p>
-            <Button size='huge' href="/docs/api" className="segment-btn" style={{marginTop: '2em', marginBottom: '3.4em',border: '#d0021b 2px solid', fontSize: '16px', }}>Get Started</Button>
+            <Button size='huge' href="/docs/api" className="segment-btn" style={{marginTop: '2em', marginBottom: '3.4em',border: '#07183b 1px solid', fontSize: '16px', }}>Get Started</Button>
           </Segment>
             
       </Grid.Column>
       <Grid.Column>
-        <Segment style={{}}>
+        <Segment style={{}} className='cards-grid'>
         <Image rounded size='tiny' src={widgetImg} centered style={{height: '60px', width: 'auto', marginTop: '3.4em'}}/>
         <Header as='h4' style={{ fontSize: '1.5em' }}>
         Booking Widget
@@ -276,17 +275,17 @@ const HomepageLayout = () => (
             <p style={{height: '5em'}}>
               A powerful and highly customizeable multi-step user flow turns appointment booking into an effortlessly seamless experience that customers will love.
             </p>     
-            <Button size='huge' href="/docs/booking" className="segment-btn" style={{marginTop: '2em', marginBottom: '3.4em',border: '#d0021b 2px solid', fontSize: '16px', }}>Get Started</Button>
+            <Button size='huge' href="/docs/booking" className="segment-btn" style={{marginTop: '2em', marginBottom: '3.4em',border: '#07183b 1px solid', fontSize: '16px', }}>Get Started</Button>
             </Segment>
       </Grid.Column>
       <Grid.Column>
-        <Segment style={{}}>
+        <Segment style={{}} className='cards-grid'>
         <Image rounded size='tiny' src={simpleWidgetImg} centered style={{height: '60px', width: 'auto', marginTop: '3.4em'}}/>
         <Header as='h4' style={{ fontSize: '1.5em' }}>
           Simple Widget            
         </Header>
         <p style={{height: '5em'}}>The Setster simple widget with limited customization can be placed on your website in many different ways as a quick solution to for booking. </p>
-        <Button size='huge' href="https://support.setster.com/hc/en-us/sections/114093980733-Booking-Widget" className="segment-btn" style={{marginTop: '2em', marginBottom: '3.4em',border: '#d0021b 2px solid', fontSize: '16px', }}>Get Started</Button>
+        <Button size='huge' href="https://support.setster.com/hc/en-us/sections/114093980733-Booking-Widget" className="segment-btn" style={{marginTop: '2em', marginBottom: '3.4em',border: '#07183b 1px solid', fontSize: '16px', }}>Get Started</Button>
         </Segment>
       </Grid.Column>
     </Grid>
