@@ -165,3 +165,7 @@ button.ui.inverted.primary.buttons .button{
   color: #fff!important;
   background-color: #000 !important;
 }
+
+.api-info-version {
+  display: none;
+}

@@ -268,7 +268,7 @@ ResponsiveContainer.propTypes = {
 
 const Api = () => (
   <ResponsiveContainer style={{backgroundColor: '#fff'}}>
-<RedocStandalone specUrl={apiOnly} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups",  "x-displayName", "x-nesting", "x-filters"],hideLoading: true,
+<RedocStandalone specUrl={apiOnly} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups",  "x-displayName", "x-nesting", "x-filters"],
     theme: theme
   }}  />
   </ResponsiveContainer>

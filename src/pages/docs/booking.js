@@ -270,7 +270,7 @@ ResponsiveContainer.propTypes = {
 
 const Booking = () => (
   <ResponsiveContainer style={{backgroundColor: '#fff'}}>
-<RedocStandalone specUrl={bookingOnly} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups",  "x-displayName", "x-nesting", "x-filters"],hideLoading: true,
+<RedocStandalone specUrl={bookingOnly} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups",  "x-displayName", "x-nesting", "x-filters"],
     theme: theme
   }}  />
   </ResponsiveContainer>

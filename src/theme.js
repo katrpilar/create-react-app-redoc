@@ -183,8 +183,10 @@ const theme = {
       fontFamily: 'Courier, monospace',
       fontWeight: ({ typography }) => typography.fontWeightRegular,
       color: '#e53935',
-      backgroundColor: 'rgba(38, 50, 56, 0.04)',
-      wrap: false,
+      // backgroundColor: 'rgba(38, 50, 56, 0.04)',
+      // backgroundColor: '#02050d',
+      // backgroundColor: '#07183b !important',
+      wrap: true
     },
     links: {
       color: ({ colors }) => colors.primary.main,
@@ -193,7 +195,7 @@ const theme = {
     },
   },
   rightPanel: {
-    backgroundColor: '#07183b',
+    backgroundColor: '#eeeeee',
     width: '40%',
     // textColor: '#ffffff',
   },
@@ -204,6 +206,7 @@ const theme = {
     // typeNameColor: theme => theme.colors.text.secondary,
     // typeTitleColor: theme => theme.schema.typeNameColor,
     // requireLabelColor: theme => theme.colors.error.main,
+    requireLabelColor: '#000'
     // labelsTextSize: '0.9em',
     // nestingSpacing: '1em',
     // arrow: {
@@ -211,10 +214,11 @@ const theme = {
     //   color: theme => theme.colors.text.secondary,
     // },
   },
-  // codeBlock: {
-  //   backgroundColor: ({ rightPanel }) => darken(0.1, rightPanel.backgroundColor),
-  //   tokens: {},
-  // },
+  codeBlock: {
+    // backgroundColor: ({ rightPanel }) => darken(0.1, rightPanel.backgroundColor),
+    backgroundColor: '#07183b'
+    // tokens: {},
+  },
 };
 
 export default theme;
