@@ -196,7 +196,7 @@ button.ui.inverted.primary.buttons .button{
   color: #07183b !important;
   box-shadow: none!important;
   /* background-color: #d0021b !important; */
-  background-color: white !important;
+  background-color: transparent !important;
   border-radius: 0% !important;
   text-transform: uppercase !important;
 }
@@ -217,7 +217,11 @@ button.ui.inverted.primary.buttons .button{
   color: #ababab !important;
 }
 
-.cards-grid:hover{
-  transition: .5s;
+/* .cards-grid:hover{
+  transition: .3s;
+  background-color: #eee !important;
+} */
+.cards-grid{
+  border-top: 4px solid !important;
   background-color: #eee !important;
 }

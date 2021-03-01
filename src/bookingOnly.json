@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "version": "2.0",
-    "title": "Setster Scheduling API",
-    "description": "The Setster API is used to control your account’s data programmatically. The API is organized around REST and standard HTTP verbs. A consistent envelope is used for all responses alongside response codes to indicate the status of the message and any error codes. JSON is returned on all our API responses with a consistent structure for all messages."
+    "title": "Setster Booking Widget",
+    "description": "The Setster Booking Widget is used to create booking flows."
   },
   "servers": [
     {
