@@ -283,17 +283,18 @@ import '../../App.css';
 import apiOnly from '../../apiOnly.json';
 import theme from '../../theme.js';
 import { RedocStandalone} from 'redoc';
-
-
 import NewNav from "../../components/NewNav"
 
-const Api = () => (
+const Api = () => {
+  return(
   <>
-<NewNav />
-<RedocStandalone specUrl={apiOnly} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups",  "x-displayName", "x-nesting", "x-filters"],
+<NewNav currentActiveItem="Docs">
+  <RedocStandalone specUrl={apiOnly} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups",  "x-displayName", "x-nesting", "x-filters"],
     theme: theme
   }}  />
+  </NewNav>
+
   </>
-)
+)}
 
 export default Api;

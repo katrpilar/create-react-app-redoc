@@ -31,6 +31,8 @@ var _syncRequires = _interopRequireDefault(require("$virtual/sync-requires"));
 
 var _matchPaths = _interopRequireDefault(require("$virtual/match-paths.json"));
 
+var _loadingIndicator = require("./loading-indicator");
+
 // Generated during bootstrap
 if (process.env.GATSBY_HOT_LOADER === `fast-refresh` && module.hot) {
   module.hot.accept(`$virtual/sync-requires`, () => {// Manually reload
@@ -140,7 +142,15 @@ function notCalledFunction() {
       }
 
       renderer( /*#__PURE__*/_react.default.createElement(Root, null), rootElement, () => {
-        (0, _apiRunnerBrowser.apiRunner)(`onInitialClientRender`);
+        (0, _apiRunnerBrowser.apiRunner)(`onInitialClientRender`); // Render query on demand overlay
+
+        if (process.env.GATSBY_QUERY_ON_DEMAND_LOADING_INDICATOR && process.env.GATSBY_QUERY_ON_DEMAND_LOADING_INDICATOR === `true`) {
+          const indicatorMountElement = document.createElement(`div`);
+          indicatorMountElement.setAttribute(`id`, `query-on-demand-indicator-element`);
+          document.body.append(indicatorMountElement);
+
+          _reactDom.default.render( /*#__PURE__*/_react.default.createElement(_loadingIndicator.LoadingIndicatorEventHandler, null), indicatorMountElement);
+        }
       });
     });
   });

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Link
+// } from "react-router-dom";
 import logo from './logo.svg';
 import setsterLogo from './setster-logo.png';
 
@@ -28,7 +28,7 @@ import apiOnly from './apiOnly.json';
 class App extends Component {
   render() {
     return (
-      <Router>
+      // <Router>
       <div className="App">
         <header className="App-header">
           <img src={setsterLogo} className="setster-logo" alt="logo" />
@@ -64,7 +64,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p> */}
       </div>
-      </Router>
+      // </Router>
     );
   }
 }
