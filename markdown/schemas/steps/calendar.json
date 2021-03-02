@@ -1,0 +1,45 @@
+{
+  "title": "Calendar step",
+  "description": "Calendar type step",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "stepTitle": {
+      "title": "Title",
+      "description": "The title of the step",
+      "type": "string",
+      "examples": [
+        "Calendar step"
+      ]
+    },
+    "stepDescription": {
+      "title": "Description",
+      "description": "The description of the step",
+      "type": "string",
+      "examples": [
+        "This is a calendar step"
+      ]
+    },
+    "stepType": {
+      "title": "Type",
+      "description": "The step type",
+      "type": "string",
+      "enum": [
+        "calendar"
+      ]
+    },
+    "nextStep": {
+      "title": "Next step",
+      "description": "The next step the widget will go to after the user finishes with the current step",
+      "type": "integer",
+      "examples": [
+        1,
+        2,
+        3
+      ]
+    }
+  },
+  "required": [
+    "type"
+  ]
+}

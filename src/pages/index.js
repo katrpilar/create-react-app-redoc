@@ -18,14 +18,13 @@ import {
   Sidebar,
   Visibility,
 } from 'semantic-ui-react'
-import '../App.css';
-import setsterLogo from '../images/setster-logo.png';
-import ipadImg from '../images/iPad-Opacity-1.svg'
-import laptopImg from '../images/enterprise-online-appointment-scheduling.png'
+// import setsterLogo from '/static/setster-logo.png';
+// import ipadImg from '/static/iPad-Opacity-1.svg'
+// import laptopImg from '/static/enterprise-online-appointment-scheduling.png'
 
-import simpleWidgetImg from '../images/access-server.svg'
-import widgetImg from '../images/Int-dots-Icon.svg'
-import apiImg from '../images/OverlappingLayers.svg'
+// import simpleWidgetImg from '/static/access-server.svg'
+// import widgetImg from '/static/Int-dots-Icon.svg'
+// import apiImg from '/static/OverlappingLayers.svg'
 
 
 const { MediaContextProvider, Media } = createMedia({
@@ -109,7 +108,7 @@ class DesktopContainer extends Component {
         href="/"
         style={{marginLeft: '2.75em'}}
         >
-          <img src={setsterLogo} alt="logo" style={{width: '100px'}} />       
+          <img src="/static/setster-logo.png" alt="logo" style={{width: '100px'}} />       
 
         </Menu.Item>   
               <Container className="menu-container">
@@ -257,7 +256,7 @@ const HomepageLayout = () => (
         <Segment 
        className='cards-grid'
         >
-        <Image rounded size='tiny' src={apiImg} centered style={{height: '60px', width: 'auto', marginTop: '3.4em'}}/>
+        <Image rounded size='tiny' src="/static/OverlappingLayers.svg" centered style={{height: '60px', width: 'auto', marginTop: '3.4em'}}/>
         <Header as='h4' style={{ fontSize: '1.5em' }}>
         Setster API
             </Header>
@@ -268,7 +267,7 @@ const HomepageLayout = () => (
       </Grid.Column>
       <Grid.Column>
         <Segment style={{}} className='cards-grid'>
-        <Image rounded size='tiny' src={widgetImg} centered style={{height: '60px', width: 'auto', marginTop: '3.4em'}}/>
+        <Image rounded size='tiny' src="/static/Int-dots-Icon.svg" centered style={{height: '60px', width: 'auto', marginTop: '3.4em'}}/>
         <Header as='h4' style={{ fontSize: '1.5em' }}>
         Booking Widget
             </Header>     
@@ -280,7 +279,7 @@ const HomepageLayout = () => (
       </Grid.Column>
       <Grid.Column>
         <Segment style={{}} className='cards-grid'>
-        <Image rounded size='tiny' src={simpleWidgetImg} centered style={{height: '60px', width: 'auto', marginTop: '3.4em'}}/>
+        <Image rounded size='tiny' src="/static/access-server.svg" centered style={{height: '60px', width: 'auto', marginTop: '3.4em'}}/>
         <Header as='h4' style={{ fontSize: '1.5em' }}>
           Simple Widget            
         </Header>
@@ -309,7 +308,7 @@ const HomepageLayout = () => (
             </p>
           </Grid.Column>
           <Grid.Column floated='right' width={6}>
-            <Image rounded size='large' src={laptopImg} />
+            <Image rounded size='large' src="/static/enterprise-online-appointment-scheduling.png" />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
