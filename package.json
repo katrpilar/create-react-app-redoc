@@ -10,6 +10,7 @@
     "es6-promise": "^4.2.8",
     "gatsby": "^2.32.9",
     "gatsby-image": "^2.2.7",
+    "gatsby-plugin-layout": "^1.10.0",
     "gatsby-plugin-less": "^2.1.2",
     "gatsby-plugin-manifest": "^2.2.4",
     "gatsby-plugin-mdx": "^1.0.18",

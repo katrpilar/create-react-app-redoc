@@ -25,46 +25,12 @@ import setsterYaml from './OpenAPI_Specification (1).yaml';
 import apiOnly from './apiOnly.json';
 // import developerPortal from './developerPortal.json';
 
+import NewNav from "./components/NewNav"
+
 class App extends Component {
   render() {
     return (
-      // <Router>
-      <div className="App">
-        <header className="App-header">
-          <img src={setsterLogo} className="setster-logo" alt="logo" />
-          <h1 className="App-title">Setster Developer Portal</h1>
-        </header>
-        {/* <JsonSchema
-          schema={{
-            type: 'object',
-            description: 'A representation of a cat',
-            properties: {
-              huntingSkill: {
-                type: 'string',
-                description: 'The measured skill for hunting',
-                default: 'lazy',
-                example: 'adventurous',
-                enum: ['clueless', 'lazy', 'adventurous', 'aggressive'],
-              },
-            },
-            required: ['huntingSkill'],
-          }}
-        /> */}
-        {/* <JsonViewer /> */}
-        <RedocStandalone specUrl={apiOnly} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups", "x-codeSamples", "x-displayName", "x-nesting", "x-filters"],
-    theme: theme
-  }} />
-        {/* <body>
-        <script src="node_modules/redoc/bundles/redoc.standalone.js"> </script> 
-
-        </body> */}
-        {/* <redoc spec-url={redocTest}/> */}
-
-        {/* <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p> */}
-      </div>
-      // </Router>
+      <NewNav currentActiveItem="home"/>
     );
   }
 }

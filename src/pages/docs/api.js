@@ -287,14 +287,14 @@ import NewNav from "../../components/NewNav"
 
 const Api = () => {
   return(
-  <>
-<NewNav currentActiveItem="Docs">
+    <NewNav currentActiveItem="Docs">
   <RedocStandalone specUrl={apiOnly} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups",  "x-displayName", "x-nesting", "x-filters"],
     theme: theme
   }}  />
   </NewNav>
+  // <NewNav currentActiveItem="Docs">
+  // </NewNav>
 
-  </>
 )}
 
 export default Api;

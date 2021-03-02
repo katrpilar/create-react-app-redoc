@@ -189,5 +189,11 @@ module.exports = {
         extensions: [`.mdx`, `.md`],
       },
     },
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/NewNav.js`),
+      },
+    },
   ],
 }

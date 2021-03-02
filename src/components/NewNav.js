@@ -26,7 +26,7 @@ const { MediaContextProvider, Media } = createMedia({
 })
 
 
-  const DesktopContainer = ({currentActiveItem, children})=>{
+  const DesktopContainer = ({currentActiveItem, children, homepage})=>{
     // state = {}
     const [fixed, setFixed] = useState(false);
     const hideFixedMenu = () => {return setFixed(false)};
@@ -97,6 +97,7 @@ const { MediaContextProvider, Media } = createMedia({
                 </Menu.Item>
               </Container>
             </Menu>
+            {homepage}
           </Segment>
         </Visibility>
         {children}
@@ -106,7 +107,7 @@ const { MediaContextProvider, Media } = createMedia({
   }
   
   
-  const MobileContainer = ({currentActiveItem, children}) => {
+  const MobileContainer = ({currentActiveItem, children, homepage}) => {
     const [sidebarOpened, setSidebarOpened] = useState(false);
    const handleSidebarHide = () => setSidebarOpened(false)    
     const handleToggle = () => setSidebarOpened(true)
@@ -158,6 +159,7 @@ const { MediaContextProvider, Media } = createMedia({
                   </Menu.Item>
                 </Menu>
               </Container>
+              {homepage}
             </Segment>
             {children}
           </Sidebar.Pusher>
