@@ -115,42 +115,43 @@ button.ui.inverted.primary.buttons .button{
   box-shadow: 0px 0px 5px 0px rgb(35 35 35 / 34%) !important;
 }
 
-.ui.primary.button.get-started{
+.get-started{
   box-shadow: none !important;
   /* box-shadow: 0px 0px 5px 0px rgb(35 35 35 / 34%) !important; */
   /* color: #d0021b!important; */
-  padding: 15px 30px;
-  border-radius: 0px;
+  padding: 15px 30px !important;
+  border-radius: 0px !important;
   /* background-image: #07183b; */
-  font-family: Lato, sans-serif;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 2px;
-  text-decoration: none;
-  text-transform: uppercase; margin: 2px;
+  font-family: Lato, sans-serif !important;
+  color: #fff !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  letter-spacing: 2px !important;
+  text-decoration: none !important;
+  text-transform: uppercase !important; 
+  margin: 2px !important;
   /* transition: background-position 1s; */
-  background-size: 200% 200%;
-  background-image: linear-gradient(to left, white 50%,#07183b 0% );
-  background-position: left;
+  background-size: 200% 200% !important;
+  background-image: linear-gradient(to left, white 50%,#07183b 0% ) !important;
+  background-position: left !important;
 
   /* -webkit-transition: background-position 1s;
   -moz-transition: background-position 1s;
   transition: background-position 1s; */
-  display: inline-block;
-  transition: background-position .3s, color .3s;
+  display: inline-block !important;
+  transition: background-position .3s, color .3s !important;
 
 }
 
-.ui.primary.button.get-started:hover{
+.get-started:hover{
   /* box-shadow: 0px 0px 5px 0px rgb(35 35 35 / 34%) !important; */
   color:  #07183b!important;
   /* background-color: #fff; */
     box-shadow: none !important;
     /* background-position: 0 -100%; */
-    background-position: right;
+    background-position: right  !important;
     /* background-position: left; */
-    transition-timing-function: linear;
+    transition-timing-function: linear !important;
     /* transition: background-color .3s, color .3s;
     transition-timing-function: linear; */
   /* background-color: #d0021b !important; */

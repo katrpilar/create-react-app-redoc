@@ -6,3 +6,5 @@
 
 // You can delete this file if you're not using it
 import "semantic-ui-css/semantic.min.css"
+// import NewNav from './src/components/NewNav'
+// export const wrapRootElement = NewNav;

@@ -62890,11 +62890,12 @@ module.exports = warning;
 /*!**********************************!*\
   !*** ./src/components/NewNav.js ***!
   \**********************************/
-/*! exports provided: default */
+/*! exports provided: MenuContext, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuContext", function() { return MenuContext; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _images_setster_logo_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../images/setster-logo.png */ "./src/images/setster-logo.png");
@@ -62909,6 +62910,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const MenuContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createContext({
+  activeItem: "Home"
+});
 const {
   MediaContextProvider,
   Media
@@ -62921,7 +62925,8 @@ const {
 });
 
 const DesktopContainer = ({
-  currentActiveItem,
+  activeItem,
+  handleItemClick,
   children,
   homepage
 }) => {
@@ -62938,13 +62943,6 @@ const DesktopContainer = ({
   const showFixedMenu = () => {
     return setFixed(true);
   };
-
-  const {
-    0: activeItem,
-    1: setActiveItem
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(currentActiveItem);
-
-  const handleItemClick = name => setActiveItem(name);
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Media, {
     greaterThan: "mobile"
@@ -63033,11 +63031,12 @@ const DesktopContainer = ({
     },
     className: "sign-up",
     href: "https://www.setster.com/onboarding/personal"
-  }, "Sign Up")))), homepage)), children);
+  }, "Sign Up")))), homepage)));
 };
 
 const MobileContainer = ({
-  currentActiveItem,
+  activeItem,
+  handleItemClick,
   children,
   homepage
 }) => {
@@ -63048,14 +63047,9 @@ const MobileContainer = ({
 
   const handleSidebarHide = () => setSidebarOpened(false);
 
-  const handleToggle = () => setSidebarOpened(true);
+  const handleToggle = () => setSidebarOpened(true); // const [activeItem, setActiveItem] = useState(currentActiveItem);
+  // const handleItemClick = (name) => setActiveItem(name);
 
-  const {
-    0: activeItem,
-    1: setActiveItem
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(currentActiveItem);
-
-  const handleItemClick = name => setActiveItem(name);
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Media, {
     as: semantic_ui_react__WEBPACK_IMPORTED_MODULE_2__["Sidebar"].Pushable,
@@ -63115,11 +63109,29 @@ const MobileContainer = ({
     style: {
       marginLeft: '0.5em'
     }
-  }, "Sign Up")))), homepage), children)));
+  }, "Sign Up")))), homepage))));
 };
 
+const Provider = props => {
+  const {
+    0: activeItem,
+    1: setActiveItem
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.activeItem);
+
+  const handleItemClick = name => setActiveItem(name);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MenuContext.Provider, {
+    value: (activeItem, handleItemClick)
+  }, props.children);
+}; // export default ({ element }) => (
+//   <Provider>
+//     {element}
+//   </Provider>
+// ); 
+
+
 const NewNav = ({
-  currentActiveItem,
+  activeItem,
   children
 }) => {
   // function handleItemClick(name){
@@ -63136,13 +63148,18 @@ const NewNav = ({
   //     <MobileContainer>{children}</MobileContainer>
   //   </MediaContextProvider>
   // )
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MediaContextProvider, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DesktopContainer, {
-    currentActiveItem: currentActiveItem,
+  // const [activeItem, setActiveItem] = useState(props.activeItem);
+  // const handleItemClick = (name) => setActiveItem(name);  
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Provider, {
+    activeItem: activeItem,
+    children: children
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MediaContextProvider, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DesktopContainer, {
+    activeItem: activeItem,
     children: children
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MobileContainer, {
-    currentActiveItem: currentActiveItem,
+    activeItem: activeItem,
     children: children
-  })));
+  }), children)));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (NewNav);

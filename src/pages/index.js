@@ -41,7 +41,7 @@ const { MediaContextProvider, Media } = createMedia({
  * components for such things.
  */
 const HomepageHeading = ({ mobile }) => (
-  <Container text>
+  <Container text textAlign="center">
     <Header
       as='h1'
       content='Setster Developer Portal'
@@ -60,7 +60,7 @@ const HomepageHeading = ({ mobile }) => (
         marginBottom: '3.4em'
       }}
     />
-    <Button primary inverted size='huge' href="/docs/api" className="get-started" >
+    <Button size='huge' href="/docs/api" className="get-started" >
       Get Started
       <Icon name='right arrow' />
     </Button>
@@ -225,14 +225,17 @@ MobileContainer.propTypes = {
   children: PropTypes.node,
 }
 
+const MobileHeading = <HomepageHeading mobile />
+
 const ResponsiveContainer = ({ children }) => (
   /* Heads up!
    * For large applications it may not be best option to put all page into these containers at
    * they will be rendered twice for SSR.
    */
   <MediaContextProvider>
-    <DesktopContainer>{children}</DesktopContainer>
-    <MobileContainer>{children}</MobileContainer>
+    {/* <DesktopContainer>{children}</DesktopContainer>
+    <MobileContainer>{children}</MobileContainer> */}
+    <HomepageHeading />
   </MediaContextProvider>
 )
 
@@ -241,9 +244,9 @@ ResponsiveContainer.propTypes = {
 }
 
 const HomepageLayout = () => (
-  <ResponsiveContainer>
-
-
+  // <ResponsiveContainer>
+<>
+<HomepageHeading/>
 <Segment vertical >
     <Header
       as='h3'
@@ -413,7 +416,7 @@ const HomepageLayout = () => (
         </Grid>
       </Container>
     </Segment> */}
-  </ResponsiveContainer>
+  </>
 )
 
 export default HomepageLayout

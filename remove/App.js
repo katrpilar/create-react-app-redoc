@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import setsterLogo from './setster-logo.png';
 
-import theme from './theme.js';
+import theme from '../src/theme.js';
 import {importMDX} from 'mdx.macro'
 // const Content = lazy(() => importMDX('../public/general/getting-started.mdx'))
 
@@ -22,10 +22,10 @@ import setsterYaml from './OpenAPI_Specification (1).yaml';
 // import setsterJSON from './tiles.json';
 // let SchemaDefinition = RedocStandalone.SchemaDefinition;
 // import redocTest from './redocTest.json';
-import apiOnly from './apiOnly.json';
+import apiOnly from '../src/apiOnly.json';
 // import developerPortal from './developerPortal.json';
 
-import NewNav from "./components/NewNav"
+import NewNav from "../src/components/NewNav"
 
 class App extends Component {
   render() {

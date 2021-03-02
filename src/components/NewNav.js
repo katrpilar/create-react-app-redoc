@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import setsterLogo from '../images/setster-logo.png';
 import {
   Button,
@@ -17,6 +17,9 @@ import {
 import { createMedia } from '@artsy/fresnel'
 import '../App.css';
 
+export const MenuContext = React.createContext({ activeItem: "Home" });
+
+
 const { MediaContextProvider, Media } = createMedia({
   breakpoints: {
     mobile: 0,
@@ -26,13 +29,12 @@ const { MediaContextProvider, Media } = createMedia({
 })
 
 
-  const DesktopContainer = ({currentActiveItem, children, homepage})=>{
+  const DesktopContainer = ({activeItem, handleItemClick, children, homepage})=>{
     // state = {}
     const [fixed, setFixed] = useState(false);
     const hideFixedMenu = () => {return setFixed(false)};
     const showFixedMenu = () => {return setFixed(true)};
-    const [activeItem, setActiveItem] = useState(currentActiveItem);
-    const handleItemClick = (name) => setActiveItem(name);
+    
       return (
         <Media greaterThan='mobile'>
         <Visibility
@@ -100,19 +102,19 @@ const { MediaContextProvider, Media } = createMedia({
             {homepage}
           </Segment>
         </Visibility>
-        {children}
+        {/* {children} */}
       </Media>
       )
     
   }
   
   
-  const MobileContainer = ({currentActiveItem, children, homepage}) => {
+  const MobileContainer = ({activeItem, handleItemClick, children, homepage}) => {
     const [sidebarOpened, setSidebarOpened] = useState(false);
    const handleSidebarHide = () => setSidebarOpened(false)    
     const handleToggle = () => setSidebarOpened(true)
-    const [activeItem, setActiveItem] = useState(currentActiveItem);
-    const handleItemClick = (name) => setActiveItem(name);
+    // const [activeItem, setActiveItem] = useState(currentActiveItem);
+    // const handleItemClick = (name) => setActiveItem(name);
       return (
         <Media as={Sidebar.Pushable} at='mobile'>
         <Sidebar.Pushable>
@@ -161,7 +163,7 @@ const { MediaContextProvider, Media } = createMedia({
               </Container>
               {homepage}
             </Segment>
-            {children}
+            {/* {children} */}
           </Sidebar.Pusher>
         </Sidebar.Pushable>
       </Media>
@@ -169,9 +171,25 @@ const { MediaContextProvider, Media } = createMedia({
     
   }
   
+  const Provider = props => {
+    const [activeItem, setActiveItem] = useState(props.activeItem);
+    const handleItemClick = (name) => setActiveItem(name);  
+    return (
+      <MenuContext.Provider value={activeItem, handleItemClick}>
+        {props.children}
+        </MenuContext.Provider>
+    )
+  };
+
+  // export default ({ element }) => (
+  //   <Provider>
+  //     {element}
+  //   </Provider>
+  // ); 
 
 
-const NewNav = ({currentActiveItem, children}) => {
+  
+const NewNav = ({activeItem, children}) => {
   
   // function handleItemClick(name){
   //   return setActiveItem(name)
@@ -187,13 +205,19 @@ const NewNav = ({currentActiveItem, children}) => {
   //     <MobileContainer>{children}</MobileContainer>
   //   </MediaContextProvider>
   // )
+  // const [activeItem, setActiveItem] = useState(props.activeItem);
+  // const handleItemClick = (name) => setActiveItem(name);  
+
 
  return (
  <>
- <MediaContextProvider>
-      <DesktopContainer currentActiveItem={currentActiveItem} children={children}/>
-      <MobileContainer currentActiveItem={currentActiveItem} children={children}/>
-    </MediaContextProvider>
+ <Provider activeItem={activeItem} children={children}>
+   <MediaContextProvider>
+    <DesktopContainer activeItem={activeItem} children={children}/>
+      <MobileContainer activeItem={activeItem} children={children}/>
+      {children}
+      </MediaContextProvider> 
+      </Provider>
  </>     
  )
 }
