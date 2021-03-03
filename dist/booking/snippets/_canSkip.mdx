@@ -1,0 +1,1 @@
+Option to set this step as being skippable or not. If you set this to true, you need to have the nextStep property defined in the step and not in the tile.

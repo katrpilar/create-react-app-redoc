@@ -26,7 +26,8 @@ import laptopImg from '../images/enterprise-online-appointment-scheduling.png'
 import simpleWidgetImg from '../images/access-server.svg'
 import widgetImg from '../images/Int-dots-Icon.svg'
 import apiImg from '../images/OverlappingLayers.svg'
-
+import 'semantic-ui-css/semantic.min.css';
+import NewNav from "../components/NewNav"
 
 const { MediaContextProvider, Media } = createMedia({
   breakpoints: {
@@ -246,6 +247,8 @@ ResponsiveContainer.propTypes = {
 const HomepageLayout = () => (
   // <ResponsiveContainer>
 <>
+<NewNav activeItem="Home">
+
 <HomepageHeading/>
 <Segment vertical >
     <Header
@@ -416,6 +419,7 @@ const HomepageLayout = () => (
         </Grid>
       </Container>
     </Segment> */}
+    </NewNav>
   </>
 )
 

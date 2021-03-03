@@ -1,0 +1,127 @@
+{
+  "title": "Setster widget settings",
+  "description": "Documentation for the settings file of the setster widget",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "accountId": {
+      "title": "Setster Account ID",
+      "description": "This should be your Setster account id",
+      "type": "integer",
+      "examples": [9731, 1234]
+    },
+    "enableLinkCheck": {
+      "title": "Enable linking check between location/services/providers",
+      "description": "If this is set to true, the widget will check if the location/service/provider combination is linked in the Setster Settings in Admin area",
+      "type": "boolean",
+      "examples": [true, false]
+    },
+    "startingStep": {
+      "title": "The starting step of the widget",
+      "desription": "This is the step number from where the widget should start",
+      "type": "integer",
+      "examples": [1]
+    },
+    "finishMessage": {
+      "title": "The message that will be display at the end of the omnichanel experience",
+      "description": "This is the message the user will see after he/she finishes the omnichanel experience successfully",
+      "type": "string",
+      "examples": ["\"You are all set\""]
+    },
+    "googleMapOptions": {
+      "title": "Google maps options",
+      "descriptions": "Required parameters for when using location-map as a step",
+      "type": "object",
+      "properties": {
+        "googleApiKey": {
+          "title": "Google Maps API Key",
+          "description": "Your Google Maps API key",
+          "type": "string",
+          "examples": ["AIzaSyC7pt50rv8Jsvrh1UAnkHhISxhisSEoWBc"]
+        },
+        "zoom": {
+          "title": "Google Maps default zoom",
+          "description": "The default zoom of the map",
+          "type": "integer",
+          "examples": [12, 15, 8]
+        },
+        "center": {
+          "title": "Map center",
+          "description": "The center of the map",
+          "type": "object",
+          "properties": {
+            "lat": {
+              "title": "Lattitude",
+              "description": "Lattitude",
+              "type": "number",
+              "examples": [47.170787]
+            },
+            "lng": {
+              "title": "Longitude",
+              "description": "Longitude",
+              "type": "number",
+              "examples": [27.578996]
+            }
+          }
+        },
+        "radius": {
+          "title": "Map radius",
+          "description": "The default radius in which we display locations in the map",
+          "type": "integer",
+          "examples": [1, 2]
+        },
+        "googleMapStyle": {
+          "title": "Google map styles",
+          "description": "https://mapstyle.withgoogle.com/",
+          "type": "array"
+        }
+      },
+      "required": ["googleApiKey", "zoom", "radius"]
+    },
+    "steps": {
+      "title": "The steps of the omnichanel experience are set here",
+      "description": "In this object you can set the widget steps",
+      "type": "object",
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "propertyNames": {
+        "pattern": "^[0-9]+$"
+      },
+      "anyOf": [
+        {
+          "$ref": "steps/tiles.json"
+        },
+        {
+          "$ref": "steps/image-map.json"
+        },
+        {
+          "$ref": "steps/locations.json"
+        },
+        {
+          "$ref": "steps/locations-map.json"
+        },
+        {
+          "$ref": "steps/services.json"
+        },
+        {
+          "$ref": "steps/staff.json"
+        },
+        {
+          "$ref": "steps/calendar.json"
+        }
+      ]
+    }
+  },
+  "required": ["accountId", "startingStep", "steps"],
+  "if": {
+    "properties": {
+      "step": {
+        "properties": {
+          "stepType": {"const": "locations-map"}
+        }
+      }
+    }
+  },
+  "then": {
+    "dependencies": ["googleMapOptions"]
+  }
+}

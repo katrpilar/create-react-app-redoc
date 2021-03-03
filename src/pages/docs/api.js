@@ -285,17 +285,20 @@ import theme from '../../theme.js';
 import { RedocStandalone} from 'redoc';
 import NewNav from "../../components/NewNav"
 import MenuContext from '../../components/NewNav';
-
+import WithNav from "../../components/NewNav"
 // export const wrapRootElement = Provider;
+import ApiRedoc from "../../components/ApiRedoc"
+import 'semantic-ui-css/semantic.min.css';
+
 
 const Api = () => {
   return(
     // <NewNav currentActiveItem="Docs">
-    // <NewNav activeItem="Docs">
-  <RedocStandalone specUrl={apiOnly} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups",  "x-displayName", "x-nesting", "x-filters"],
-    theme: theme
-  }}  />
-  // </NewNav>
+    <>
+    <NewNav activeItem="Docs" />
+  <ApiRedoc />
+  </>
+  
   // <NewNav currentActiveItem="Docs">
   // </NewNav>
 

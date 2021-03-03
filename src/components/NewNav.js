@@ -16,6 +16,7 @@ import {
 } from 'semantic-ui-react'
 import { createMedia } from '@artsy/fresnel'
 import '../App.css';
+import 'semantic-ui-css/semantic.min.css';
 
 export const MenuContext = React.createContext({ activeItem: "Home" });
 
@@ -181,13 +182,7 @@ const { MediaContextProvider, Media } = createMedia({
     )
   };
 
-  // export default ({ element }) => (
-  //   <Provider>
-  //     {element}
-  //   </Provider>
-  // ); 
-
-
+ 
   
 const NewNav = ({activeItem, children}) => {
   
@@ -223,3 +218,10 @@ const NewNav = ({activeItem, children}) => {
 }
 
 export default NewNav;
+
+// export const WithNav = (element, activeItem ) => (
+//     <NewNav activeItem={activeItem}>
+//       {element}
+//     </NewNav>
+//   ); 
+

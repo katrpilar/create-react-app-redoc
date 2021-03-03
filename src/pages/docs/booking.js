@@ -78,11 +78,12 @@ import NewNav from "../../components/NewNav"
 
 const Booking = () => (
   // <NewNav currentActiveItem="booking widget">
+  <NewNav activeItem="booking widget">
 
 <RedocStandalone specUrl={bookingOnly} options={{ noAutoAuth: true, showExtensions: ["x-examples", "x-tagGroups",  "x-displayName", "x-nesting", "x-filters"],
     theme: theme
   }}  />
-  // </NewNav>
+  </NewNav>
 )
 
 export default Booking

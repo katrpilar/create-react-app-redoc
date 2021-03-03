@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{ZU8X:function(e,n,t){"use strict";t.r(n);var s=t("q1tI"),o=t.n(s),a=(t("Q8kY"),t("LR/Q")),p=t("zDcZ"),i=t("+Cn6");t("dOPB");n.default=()=>o.a.createElement(i.RedocStandalone,{specUrl:a,options:{noAutoAuth:!0,showExtensions:["x-examples","x-tagGroups","x-displayName","x-nesting","x-filters"],theme:p.a}})}}]);
+//# sourceMappingURL=component---src-pages-docs-api-js-efbf8e20e52d79feac67.js.map

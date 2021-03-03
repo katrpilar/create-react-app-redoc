@@ -2,8 +2,11 @@ var plugins = [{
       plugin: require('/Users/katrina/Desktop/Setster/create-react-app-redoc/node_modules/gatsby-plugin-mdx/gatsby-ssr'),
       options: {"plugins":[],"extensions":[".mdx",".md"],"defaultLayouts":{},"gatsbyRemarkPlugins":[],"lessBabel":false,"remarkPlugins":[],"rehypePlugins":[],"mediaTypes":["text/markdown","text/x-markdown"],"root":"/Users/katrina/Desktop/Setster/create-react-app-redoc"},
     },{
-      plugin: require('/Users/katrina/Desktop/Setster/create-react-app-redoc/node_modules/gatsby-plugin-layout/gatsby-ssr'),
-      options: {"plugins":[],"component":"/Users/katrina/Desktop/Setster/create-react-app-redoc/src/components/NewNav.js"},
+      plugin: require('/Users/katrina/Desktop/Setster/create-react-app-redoc/node_modules/gatsby-plugin-styled-components/gatsby-ssr'),
+      options: {"plugins":[]},
+    },{
+      plugin: require('/Users/katrina/Desktop/Setster/create-react-app-redoc/gatsby-ssr'),
+      options: {"plugins":[]},
     }]
 // During bootstrap, we write requires at top of this file which looks like:
 // var plugins = [
